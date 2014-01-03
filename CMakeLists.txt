@@ -33,4 +33,5 @@ endif ()
 # Require pkg-config
 find_package (PkgConfig REQUIRED)
 
-add_subdirectory(src)
+add_subdirectory (src)
+add_subdirectory (test)

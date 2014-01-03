@@ -14,7 +14,7 @@ install:
 	cd build && make install all
 
 clean:
-	rm build/CM*
+	rm -r build/CM*
 	rm -r build/src
 
 cleanall:
