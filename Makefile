@@ -3,8 +3,8 @@
 #
 
 # set compiler
-CC ?= clang
-CXX ?= clang++
+CC := clang
+CXX := clang++
 
 
 all:
