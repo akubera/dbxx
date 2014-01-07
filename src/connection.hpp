@@ -13,8 +13,6 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-typedef unsigned short port_t;
-
 class Connection
 {
 public:

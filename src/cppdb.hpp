@@ -10,6 +10,8 @@
 
 CPPDB_NAMESPACE_BEGIN
 
+typedef unsigned short port_t;
+
 
 
 CPPDB_NAMESPACE_END

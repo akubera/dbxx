@@ -9,6 +9,7 @@
 
 #include <vector>
 #include <string>
+#include "cppdb.hpp"
 
 class Driver {
 public:
