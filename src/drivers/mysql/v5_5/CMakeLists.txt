@@ -1,0 +1,8 @@
+#
+# src/drivers/mysql/v5_5/CMakeLists.txt
+#
+
+set (MYSQL_DRIVER_SRCS
+    mysql_driver.cpp)
+
+add_library (mysql_5_5 SHARED ${MYSQL_DRIVER_SRCS})

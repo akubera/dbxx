@@ -9,7 +9,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
+
 using namespace std;
+
+#include "../connection.hpp"
 
 void usage();
 int run_one_arg(const std::string&);
@@ -24,6 +28,9 @@ std::string cmd_name;
  */
 int main(int argc, char** argv)
 {
+    cppdb::Connection cnx("mysql://andrew:password@localhost/DATABASE:90");
+    return 0;
+    
     // build vector of strings
     vector<string> args(argv, argv + argc);
 

@@ -4,6 +4,7 @@
 
 set (CPPDB_SRCS
   connection.cpp
+  driver_manager.cpp
 )
 
 add_subdirectory (drivers)
