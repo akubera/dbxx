@@ -28,13 +28,6 @@ std::string cmd_name;
  */
 int main(int argc, char** argv)
 {
-    for (auto d : Driver::GetDriverNames()) {
-        std::cout << d << std::endl;
-    }
-
-    cppdb::Connection cnx("mysql://andrew:password@localhost/DATABASE:90");
-    return 0;
-    
     // build vector of strings
     vector<string> args(argv, argv + argc);
 
@@ -76,6 +69,10 @@ int run_one_arg(const std::string& func_name)
 int
 drivers()
 {
+    std::cout << "Found the following drivers:" << std::endl;
+    for (auto driver : cppdb::Driver::GetDriverNames()) {
+        std::cout << "\t" << driver << std::endl;
+    }
     return EXIT_SUCCESS;
 }
 
