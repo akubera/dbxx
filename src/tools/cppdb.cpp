@@ -28,6 +28,10 @@ std::string cmd_name;
  */
 int main(int argc, char** argv)
 {
+    for (auto d : Driver::GetDriverNames()) {
+        std::cout << d << std::endl;
+    }
+
     cppdb::Connection cnx("mysql://andrew:password@localhost/DATABASE:90");
     return 0;
     

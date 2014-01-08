@@ -11,18 +11,40 @@
 #include <string>
 #include "cppdb.hpp"
 
-class Driver {
-public:
-    Driver() {};
-    Driver(const Driver& orig) {};
-    virtual ~Driver() {};
+#include <boost/filesystem.hpp>
 
-    static void LoadDrivers(const std::string& path = "$DEFAULT_DRIVER_PATH$") {
-        
+namespace fs = boost::filesystem;
+
+class Driver
+{
+public:
+
+    Driver()
+    {
     };
 
-    static std::vector<std::string> GetDriverNames() {
-        return std::vector<std::string>();
+    Driver(const Driver& orig)
+    {
+    };
+
+    virtual ~Driver()
+    {
+    };
+
+    virtual int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
+
+    static void LoadDrivers(const std::string& path = "$DEFAULT_DRIVER_PATH$")
+    {
+
+    };
+
+    static std::vector<std::string> GetDriverNames()
+    {
+        fs::path p("..");
+        std::cout << fs::absolute(p) << std::endl;
+        std::vector<std::string> res;
+        res.push_back("one");
+        return res;
     };
 
 protected:

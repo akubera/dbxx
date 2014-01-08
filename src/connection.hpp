@@ -8,6 +8,7 @@
 #pragma once
 
 #include "cppdb.hpp"
+#include "driver.hpp"
 
 #include <string>
 
