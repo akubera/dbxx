@@ -6,5 +6,5 @@ set (MYSQL_DRIVER_SRCS
     mysql_driver.cpp)
 
 include_directories (${MYSQL_INCLUDE_DIR})
-add_library (mysql_5_5 SHARED ${MYSQL_DRIVER_SRCS})
-target_link_libraries (mysql_5_5 ${MYSQL_LIBS} ${BOOST_LIBS})
+add_library (_mysql_driver SHARED ${MYSQL_DRIVER_SRCS})
+target_link_libraries (_mysql_driver ${MYSQL_LIBS} ${BOOST_LIBS})

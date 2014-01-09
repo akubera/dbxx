@@ -48,7 +48,12 @@ public:
     static std::vector<std::string> GetDriverNames()
     {
         // regex to match driver libraries (lib_<NAME>_driver.*)
-        const std::regex driver_file_regex("lib_([^_]*)_driver\\..*");
+        std::regex driver_file_regex;
+        try {
+            driver_file_regex = std::regex("lib_([^_]*)_driver.*");
+        } catch (std::regex_error e) {
+            driver_file_regex = std::regex(R"(lib_([^_]*)_driver\..*)");
+        }
 
         fs::path driver_path(driver_path_default);
 

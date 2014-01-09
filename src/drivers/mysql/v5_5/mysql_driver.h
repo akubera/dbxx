@@ -12,7 +12,7 @@
 #include <mysql.h>
 #include "../../../driver.hpp"
 
-class mysql_driver : public Driver
+class mysql_driver : public cppdb::Driver
 {
 public:
     mysql_driver();
