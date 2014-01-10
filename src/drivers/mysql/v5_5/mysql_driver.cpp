@@ -11,7 +11,7 @@
 #include "mysql_driver.h"
 
 mysql_driver::mysql_driver() :
-_conn(mysql_init(nullptr))
+    _conn(mysql_init(nullptr))
 {
     // this really should not happen...
     if (_conn == nullptr) {
