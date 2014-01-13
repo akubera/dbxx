@@ -20,12 +20,28 @@ _conn(mysql_init(nullptr))
     }
 }
 
-mysql_driver::mysql_driver(const mysql_driver& orig)
+mysql_driver::mysql_driver(const mysql_driver& orig) :
+
+_host(orig._host),
+_port(orig._port),
+_username(orig._username),
+_password(orig._password)        
 {
+    auto status = mysql_real_connect(_conn, host.c_str(), username.c_str(), password.c_str(), database.c_str(), port, nullptr, 0);
+    if (!status) {
+        std::cerr << "ERROR : " << mysql_error(_conn) << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    if (orig._conn) {
+        
+    }
 }
 
 mysql_driver::~mysql_driver()
 {
+    mysql_close(_conn);
+    _conn = nullptr;
 }
 
 int
