@@ -13,13 +13,6 @@
 
 #include "cppdb.hpp"
 
-#include <boost/filesystem.hpp>
-
-namespace fs = boost::filesystem;
-
-// the default path to look for drivers
-const fs::path driver_path_default("./build/drivers/");
-
 CPPDB_NAMESPACE_BEGIN
 
 class Driver
@@ -51,8 +44,13 @@ public:
      */
     virtual int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
 
+    std::string Name() { return _name; }
 
 protected:
+    
+    Driver(const std::string& name) : _name(name) {};
+    
+    const std::string _name;
 
 };
 

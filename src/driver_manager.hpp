@@ -9,6 +9,10 @@
 
 
 #include "cppdb.hpp"
+#include "driver.hpp"
+
+#include <map>
+#include <regex>
 
 #include <boost/filesystem.hpp>
 
@@ -19,6 +23,9 @@ CPPDB_NAMESPACE_BEGIN
 // the default path to look for drivers
 const fs::path driver_path_default("./build/drivers/");
 
+// regex to match driver libraries (lib_<NAME>_driver.*)
+const std::regex driver_file_regex("lib_([^_]*)_driver\\..*");
+
 
 class DriverManager
 {
@@ -28,8 +35,10 @@ public:
 
     static std::vector<std::string> GetDriverNames(const std::string& path = driver_path_default.string());
 
-protected:
+    static Driver* GetDriverWithName(const std::string& driver_name);
 
+protected:
+    static std::map<std::string, void*> _drivers;
 };
 
 CPPDB_NAMESPACE_END

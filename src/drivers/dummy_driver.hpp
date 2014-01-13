@@ -10,14 +10,20 @@
 
 #include "../driver.hpp"
 
-class dummy_driver : public cppdb::Driver {
+class dummy_driver : public cppdb::Driver
+{
 public:
     dummy_driver();
     dummy_driver(const dummy_driver& orig);
     virtual ~dummy_driver();
-private:
 
+    int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
+
+protected:
 };
+
+extern "C" cppdb::Driver* create_driver();
+extern "C" void destroy_driver(cppdb::Driver* driver);
 
 #endif	/* DUMMY_DRIVER_HPP */
 
