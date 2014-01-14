@@ -46,17 +46,18 @@ Query<_Tv...>::select(const std::string& x)
 
 template <typename... _Tv>
 Query<_Tv...>&
-Query<_Tv...>::where(const std::string&)
-{
-    return *this;
-}
-
-template <typename... _Tv>
-Query<_Tv...>&
 Query<_Tv...>::from(const std::string&)
 {
     return *this;
-}
+};
+
+template <typename... _Tv>
+Query<_Tv...>&
+Query<_Tv...>::where(const std::string&)
+{
+    return *this;
+};
+
 
 
 CPPDB_NAMESPACE_END

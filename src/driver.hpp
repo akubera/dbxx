@@ -45,12 +45,17 @@ public:
      */
     virtual int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
 
-    std::string Name() { return _name; }
+    std::string Name()
+    {
+        return _name;
+    }
 
 protected:
-    
-    Driver(const std::string& name) : _name(name) {};
-    
+
+    Driver(const std::string& name) : _name(name)
+    {
+    };
+
     const std::string _name;
 
 };

@@ -13,6 +13,9 @@
 CPPDB_NAMESPACE_BEGIN
 
 template <typename... _Tv>
+class Row;
+
+template <typename... _Tv>
 class QueryResult
 {
 public:
@@ -20,11 +23,16 @@ public:
     QueryResult(const QueryResult& orig);
     virtual ~QueryResult();
 
+    Row<_Tv...> begin();
+    Row<_Tv...> end();
+
 protected:
 
 };
 
 CPPDB_NAMESPACE_END
+        
+#include "query_result.tcc"
 
 #endif	/* QUERY_RESULT_HPP */
 

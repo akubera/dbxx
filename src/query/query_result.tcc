@@ -14,17 +14,36 @@
 CPPDB_NAMESPACE_BEGIN
 
 template <typename... _Tv>
-QueryResult::QueryResult()
+QueryResult<_Tv...>::QueryResult()
 {
 }
 
-QueryResult::QueryResult(const QueryResult& orig)
+template <typename... _Tv>
+QueryResult<_Tv...>::QueryResult(const QueryResult& orig)
 {
 }
 
-QueryResult::~QueryResult()
+template <typename... _Tv>
+QueryResult<_Tv...>::~QueryResult()
 {
 }
+
+template <typename... _Tv>
+Row<_Tv...>
+QueryResult<_Tv...>::begin()
+{
+    Row<_Tv...> result(this, 0);
+    return result;
+}
+
+template <typename... _Tv>
+Row<_Tv...>
+QueryResult<_Tv...>::end()
+{
+    return Row< _Tv...>::EmptyRow();
+}
+
+
 
 CPPDB_NAMESPACE_END
 

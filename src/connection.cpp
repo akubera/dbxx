@@ -19,7 +19,7 @@ Connection::Connection()
 Connection::Connection(const std::string& cnx_string)
 {
     std::cout << "[Connection::Connection]\n";
-    const std::string protocol_delimeter {"://"};
+    const std::string protocol_delimeter{"://"};
 
     std::string hostname, port_string, db_name, username, password;
 
@@ -31,7 +31,7 @@ Connection::Connection(const std::string& cnx_string)
         throw std::exception();
     }
 
-    std::string protocol(cnx_string.begin(), cnx_string.begin()+ptr);
+    std::string protocol(cnx_string.begin(), cnx_string.begin() + ptr);
 
     // point to past the delimeter
     ptr += protocol_delimeter.size();
@@ -48,27 +48,28 @@ Connection::Connection(const std::string& cnx_string)
         // if the colon is before our current position, throw an error because we have just found the one in "://"
         if (colon_position <= ptr) {
             std::cerr << "ERROR : Malformed connection string - "
-                "Expected colon separator ':' before '@' when specifying username and password."
-                << std::endl;
+                    "Expected colon separator ':' before '@' when specifying username and password."
+                    << std::endl;
             throw std::exception();
         }
 
         // ensure there is exactly one colon between :// and '@'
         if (std::count(cnx_string.begin() + ptr, cnx_string.begin() + at_position, ':') != 1) {
             std::cerr << "ERROR : Malformed connection string - "
-                "Expected exactly one (1) colon separator ':' before '@' when specifying username and password in string "
-                "'" << cnx_string << "'"
-                << std::endl;
+                    "Expected exactly one (1) colon separator ':' before '@' when specifying username and password in string "
+                    "'" << cnx_string << "'"
+                    << std::endl;
             throw std::exception();
         }
 
         username = std::string(cnx_string.begin() + ptr, cnx_string.begin() + colon_position);
-        password = std::string(cnx_string.begin() + colon_position+1, cnx_string.begin() + at_position);
+        password = std::string(cnx_string.begin() + colon_position + 1, cnx_string.begin() + at_position);
 
         ptr = at_position + 1;
-    // no '@' char, use the default username and password?
-    } else {
-        
+        // no '@' char, use the default username and password?
+    }
+    else {
+
     }
 
     // ptr now points to beginning of hostname - find either next ':' or '/'
@@ -77,33 +78,34 @@ Connection::Connection(const std::string& cnx_string)
     // no colon nor slash - copy hostname to the end
     if (next_delim_position == std::string::npos) {
         hostname = cnx_string.substr(ptr);
-    } else {
+    }
+    else {
         hostname = cnx_string.substr(ptr, next_delim_position - ptr);
     }
 
     if (next_delim_position == std::string::npos) {
 
     }
-    // colon means port is specified
+        // colon means port is specified
     else if (cnx_string[next_delim_position] == ':') {
-        std::cout << "COLON "<< next_delim_position << ' ' <<  ptr << std::endl;
+        std::cout << "COLON " << next_delim_position << ' ' << ptr << std::endl;
 
         // find a slash
         std::size_t slash_pos = cnx_string.find('/', next_delim_position);
-        
+
         // if slash exists after colon, copy up to the colon into portname, everything after into db_name
         if (slash_pos != std::string::npos) {
             port_string = cnx_string.substr(next_delim_position + 1, slash_pos - (next_delim_position + 1));
             db_name = cnx_string.substr(slash_pos + 1);
-        } 
+        }
 
-        // no slash, copy to end of string
+            // no slash, copy to end of string
         else {
             port_string = cnx_string.substr(next_delim_position + 1);
         }
     }
-    
-    // a slash punctuated the hostname
+
+        // a slash punctuated the hostname
     else {
         db_name = cnx_string.substr(next_delim_position + 1);
     }

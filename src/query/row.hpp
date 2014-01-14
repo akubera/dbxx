@@ -9,6 +9,7 @@
 #define	ROW_HPP
 
 #include "../cppdb.hpp"
+#include "../types.hpp"
 
 CPPDB_NAMESPACE_BEGIN
 
@@ -16,14 +17,25 @@ CPPDB_NAMESPACE_BEGIN
  * Row is a single result element from an executed query
  */
 template <typename... _Tv>
-class Row {
+class Row
+{
 public:
     Row();
     Row(const Row& orig);
     virtual ~Row();
 
+    static Row<_Tv...> EmptyRow();
+    
 protected:
+    /**
+     * Position index of row in query result
+     */
+    size_t _index;
 
+    /**
+     * An empty row which is used to denote the end of a query result
+     */
+    bool _empty {false};
 };
 
 CPPDB_NAMESPACE_END
