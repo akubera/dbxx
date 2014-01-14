@@ -9,6 +9,7 @@
 #define	QUERY_HPP
 
 #include "../cppdb.hpp"
+#include "../types.hpp"
 
 #include "query_result.hpp"
 
@@ -52,5 +53,7 @@ CPPDB_NAMESPACE_END
 
 // include the templates
 #include "query.tcc"
+        
+typedef cppdb::Query<cppdb::SQLInt_t> IntQuery;
 
 #endif //QUERY_HPP
