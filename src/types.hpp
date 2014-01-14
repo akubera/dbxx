@@ -8,3 +8,9 @@
 #pragma once
 
 #include <typeinfo>
+
+namespace cppdb {
+
+    typedef unsigned short port_t;
+
+}

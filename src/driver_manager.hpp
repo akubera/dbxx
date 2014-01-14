@@ -13,27 +13,26 @@
 
 #include <map>
 #include <regex>
-
-#include <boost/filesystem.hpp>
-
-namespace fs = boost::filesystem;
+#include <string>
 
 CPPDB_NAMESPACE_BEGIN
 
 // the default path to look for drivers
-const fs::path driver_path_default("./build/drivers/");
+const std::string driver_path_default("./build/drivers/");
 
 // regex to match driver libraries (lib_<NAME>_driver.*)
 const std::regex driver_file_regex("lib_([^_]*)_driver\\..*");
 
 
+class Driver;
+
 class DriverManager
 {
 public:
 
-    static void LoadDrivers(const std::string& path = driver_path_default.string());
+    static void LoadDrivers(const std::string& path = driver_path_default);
 
-    static std::vector<std::string> GetDriverNames(const std::string& path = driver_path_default.string());
+    static std::vector<std::string> GetDriverNames(const std::string& path = driver_path_default);
 
     static Driver* GetDriverWithName(const std::string& driver_name);
 

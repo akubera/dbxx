@@ -11,6 +11,7 @@
 #include <string>
 #include <regex>
 
+#include "types.hpp"
 #include "cppdb.hpp"
 
 CPPDB_NAMESPACE_BEGIN

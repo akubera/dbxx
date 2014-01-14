@@ -10,6 +10,11 @@
 #include <regex>
 #include <dlfcn.h>
 
+#include <boost/filesystem.hpp>
+
+namespace fs = boost::filesystem;
+
+
 CPPDB_NAMESPACE_BEGIN
 
 std::map<std::string, void*> DriverManager::_drivers;
