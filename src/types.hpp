@@ -8,9 +8,13 @@
 #pragma once
 
 #include <typeinfo>
+#include <stdint.h>
 
-namespace cppdb
-{
+#define CPPDB_NAMESPACE_BEGIN namespace cppdb {
+#define CPPDB_NAMESPACE_END }
+
+CPPDB_NAMESPACE_BEGIN
+
     // type for ports (IP)
     typedef unsigned short port_t;
 
@@ -22,4 +26,4 @@ namespace cppdb
     typedef float   SQLSingle_t;
     typedef double  SQLDouble_t;
 
-}
+CPPDB_NAMESPACE_END

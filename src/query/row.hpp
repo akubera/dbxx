@@ -21,6 +21,7 @@ class Row
 {
 public:
     Row();
+    Row(QueryResult<_Tv...>*);
     Row(const Row& orig);
     virtual ~Row();
 
@@ -36,6 +37,8 @@ protected:
      * An empty row which is used to denote the end of a query result
      */
     bool _empty {false};
+    
+    QueryResult<_Tv...> *_query_res;
 };
 
 CPPDB_NAMESPACE_END

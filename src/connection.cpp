@@ -66,7 +66,7 @@ Connection::Connection(const std::string& cnx_string)
         password = std::string(cnx_string.begin() + colon_position + 1, cnx_string.begin() + at_position);
 
         ptr = at_position + 1;
-        // no '@' char, use the default username and password?
+    // no '@' char, use the default username and password?
     }
     else {
 
@@ -86,7 +86,8 @@ Connection::Connection(const std::string& cnx_string)
     if (next_delim_position == std::string::npos) {
 
     }
-        // colon means port is specified
+
+    // colon means port is specified
     else if (cnx_string[next_delim_position] == ':') {
         std::cout << "COLON " << next_delim_position << ' ' << ptr << std::endl;
 
@@ -99,13 +100,13 @@ Connection::Connection(const std::string& cnx_string)
             db_name = cnx_string.substr(slash_pos + 1);
         }
 
-            // no slash, copy to end of string
+        // no slash, copy to end of string
         else {
             port_string = cnx_string.substr(next_delim_position + 1);
         }
     }
 
-        // a slash punctuated the hostname
+    // a slash punctuated the hostname
     else {
         db_name = cnx_string.substr(next_delim_position + 1);
     }

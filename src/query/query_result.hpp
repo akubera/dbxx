@@ -23,6 +23,8 @@ public:
     QueryResult(const QueryResult& orig);
     virtual ~QueryResult();
 
+    Row<_Tv...> getRow(size_t rownumber);
+
     Row<_Tv...> begin();
     Row<_Tv...> end();
 

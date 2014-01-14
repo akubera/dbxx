@@ -30,17 +30,24 @@ QueryResult<_Tv...>::~QueryResult()
 
 template <typename... _Tv>
 Row<_Tv...>
+QueryResult<_Tv...>::getRow(size_t rownumber)
+{
+    Row<_Tv...> result(this);
+    return result;
+}
+
+template <typename... _Tv>
+Row<_Tv...>
 QueryResult<_Tv...>::begin()
 {
-    Row<_Tv...> result(this, 0);
-    return result;
+    return getRow(0);
 }
 
 template <typename... _Tv>
 Row<_Tv...>
 QueryResult<_Tv...>::end()
 {
-    return Row< _Tv...>::EmptyRow();
+    return Row<_Tv...>::EmptyRow();
 }
 
 
