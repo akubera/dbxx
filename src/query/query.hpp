@@ -5,18 +5,18 @@
  * Created on January 8, 2014, 5:35 PM
  */
 
-#pragma once
-
-#ifndef QUERY_HCC
-#define	QUERY_HCC
-#endif
+#ifndef QUERY_HPP
+#define	QUERY_HPP
 
 #include "../cppdb.hpp"
-#include "../connection.hpp"
 
 #include "query_result.hpp"
 
+#include <string>
+
 CPPDB_NAMESPACE_BEGIN
+
+class Connection;
 
 template <typename... _Tv>
 class Query {
@@ -24,16 +24,27 @@ public:
     Query();
     Query(const Query& orig);
     virtual ~Query();
+
+    Query<_Tv...>& select(const std::string& );
+    Query<_Tv...>& where(const std::string& );
+    Query<_Tv...>& from(const std::string& );
     
-    QueryResult<_Tv...> Exec(cppdb::Connection);
+    cppdb::QueryResult<_Tv...> Exec(cppdb::Connection& );
 
 protected:
 
+public:
+    class Condition {
+    public:
+        Condition(const std::string&){};
+    };
+    
+
 };
-
-
 
 CPPDB_NAMESPACE_END
 
 // include the templates
 #include "query.tcc"
+
+#endif //QUERY_HPP

@@ -6,20 +6,26 @@
  */
 
 
-#ifndef ROW_HPP
-
 #include "../cppdb.hpp"
+
+#ifndef ROW_HPP
+#warning Including 'row.tcc' directly! You must only include row.hpp
+#endif
+
 
 
 CPPDB_NAMESPACE_BEGIN
 
-Row::Row() {
+template <typename... _Tv>
+Row<_Tv...>::Row() {
 }
 
-Row::Row(const Row& orig) {
+template <typename... _Tv>
+Row<_Tv...>::Row(const Row& orig) {
 }
 
-Row::~Row() {
+template <typename... _Tv>
+Row<_Tv...>::~Row() {
 }
 
 CPPDB_NAMESPACE_END

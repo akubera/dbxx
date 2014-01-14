@@ -12,7 +12,7 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-
+template <typename... _Tv>
 class QueryResult
 {
 public:
