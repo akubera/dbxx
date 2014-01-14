@@ -9,11 +9,11 @@
 
 #include <vector>
 #include <string>
+#include <regex>
+
 #include "cppdb.hpp"
 
-#include <boost/filesystem.hpp>
-
-namespace fs = boost::filesystem;
+CPPDB_NAMESPACE_BEGIN
 
 class Driver
 {
@@ -31,22 +31,27 @@ public:
     {
     };
 
+    /**
+     * Connect to a server
+     *
+     * @param host Hostname of the server to connect to
+     * @param database Name of the database to use
+     * @param port Port number of the 
+     * @param username A username to authenticate with server
+     * @param password A password to authenticate the username
+     * 
+     * @return Status
+     */
     virtual int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
 
-    static void LoadDrivers(const std::string& path = "$DEFAULT_DRIVER_PATH$")
-    {
-
-    };
-
-    static std::vector<std::string> GetDriverNames()
-    {
-        fs::path p("..");
-        std::cout << fs::absolute(p) << std::endl;
-        std::vector<std::string> res;
-        res.push_back("one");
-        return res;
-    };
+    std::string Name() { return _name; }
 
 protected:
+    
+    Driver(const std::string& name) : _name(name) {};
+    
+    const std::string _name;
 
 };
+
+CPPDB_NAMESPACE_END

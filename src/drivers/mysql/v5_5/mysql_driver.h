@@ -23,6 +23,13 @@ public:
 
 protected:
     MYSQL *_conn;
+
+    std::string _host;
+    cppdb::port_t _port;
+
+    std::string _username;
+    std::string _password;
+
     MYSQL_RES *res;
     MYSQL_ROW row;
 };

@@ -26,7 +26,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
   add_definitions ("-std=c++11")
 else ()
   if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-    add_definitions ("-std=c++11 -stdlib=libstdc++")
+    add_definitions ("-std=c++11 -stdlib=libc++")
   endif()
 endif ()
 
