@@ -13,7 +13,7 @@
 #include <mysql.h>
 #include "../../../driver.hpp"
 
-class mysql_driver : public Driver
+class mysql_driver : public cppdb::Driver
 {
 public:
     mysql_driver();
@@ -103,6 +103,14 @@ public:
 
 protected:
     MYSQL *_conn;
+
+    std::string _host;
+    cppdb::port_t _port;
+
+    std::string _username;
+    std::string _password;
+    std::string _database {""};
+
     MYSQL_RES *res;
     MYSQL_ROW row;
 };
