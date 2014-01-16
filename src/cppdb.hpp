@@ -5,11 +5,9 @@
 
 #pragma once
 
-#define CPPDB_NAMESPACE_BEGIN namespace cppdb {
-#define CPPDB_NAMESPACE_END }
+#include "types.hpp"
 
-CPPDB_NAMESPACE_BEGIN
+#include "query/query.hpp"
+#include "query/query_result.hpp"
+#include "query/row.hpp"
 
-
-
-CPPDB_NAMESPACE_END
