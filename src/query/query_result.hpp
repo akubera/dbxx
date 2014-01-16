@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   query_result.hpp
  * Author: andrewkubera
  *
@@ -7,6 +7,8 @@
 
 #ifndef QUERY_RESULT_HPP
 #define	QUERY_RESULT_HPP
+
+#include <cstdlib>
 
 #include "../cppdb.hpp"
 
@@ -33,7 +35,7 @@ protected:
 };
 
 CPPDB_NAMESPACE_END
-        
+
 #include "query_result.tcc"
 
 #endif	/* QUERY_RESULT_HPP */

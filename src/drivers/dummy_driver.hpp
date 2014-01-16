@@ -21,6 +21,7 @@ public:
     cppdb::status_t Disconnect();
 
 protected:
+
 };
 
 extern "C" cppdb::Driver* create_driver();
