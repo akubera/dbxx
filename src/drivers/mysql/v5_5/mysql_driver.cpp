@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   mysql_driver.cpp
  * Author: andrewkubera
- * 
+ *
  * Created on January 6, 2014, 9:42 PM
  */
 
@@ -41,11 +41,13 @@ mysql_driver::mysql_driver(const mysql_driver& orig) :
 
 mysql_driver::~mysql_driver()
 {
-    mysql_close(_conn);
+    if (_conn) {
+        mysql_close(_conn);
+    }
     _conn = nullptr;
 }
 
-int
+cppdb::status_t
 mysql_driver::Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password)
 {
     //    mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd, const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag)
@@ -54,5 +56,12 @@ mysql_driver::Connect(const std::string& host, const std::string& database, cppd
         std::cerr << "ERROR : " << mysql_error(_conn) << std::endl; //?
         exit(EXIT_FAILURE);
     }
+    return 0;
+}
+
+cppdb::status_t
+mysql_driver::Disconnect() {
+    mysql_close(_conn);
+    _conn = nullptr;
     return 0;
 }
