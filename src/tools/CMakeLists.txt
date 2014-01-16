@@ -8,3 +8,5 @@ set (CPPDB_CLI_SRCS
 
 add_executable (cppdb_cli ${CPPDB_CLI_SRCS})
 target_link_libraries (cppdb_cli cppdb)
+
+

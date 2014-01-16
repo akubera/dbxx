@@ -3,9 +3,14 @@
 #
 
 # set compiler
-CC := gcc
-CXX := g++
 
+ifeq (`uname`,Darwin)
+  CC = clang
+  CXX = clang++
+else
+  CC = gcc
+  CXX = g++
+endif
 
 all:
 	cd build && CC=${CC} CXX=${CXX} cmake .. && make
