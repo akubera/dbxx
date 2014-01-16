@@ -70,7 +70,7 @@ int
 drivers()
 {
     std::cout << "Found the following drivers:" << std::endl;
-    for (auto driver : cppdb::Driver::GetDriverNames()) {
+    for (auto driver : cppdb::DriverManager::GetDriverNames()) {
         std::cout << "\t" << driver << std::endl;
     }
     return EXIT_SUCCESS;

@@ -18,11 +18,19 @@ public:
     mysql_driver();
     mysql_driver(const mysql_driver& orig);
     virtual ~mysql_driver();
-    
+
     int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
 
 protected:
     MYSQL *_conn;
+
+    std::string _host;
+    cppdb::port_t _port;
+
+    std::string _username;
+    std::string _password;
+    std::string _database {""};
+
     MYSQL_RES *res;
     MYSQL_ROW row;
 };
