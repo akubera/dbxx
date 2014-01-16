@@ -15,4 +15,10 @@ if (${MYSQL_FOUND})
 add_subdirectory(mysql)
 endif (${MYSQL_FOUND})
 
+find_package (ODBC)
+
+if (${ODBC_FOUND})
+add_subdirectory(odbc)
+endif (${ODBC_FOUND})
+
 #add_subdirectory(postgres/v09_3)
