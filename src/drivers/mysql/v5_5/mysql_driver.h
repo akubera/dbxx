@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   mysql_driver.h
  * Author: andrewkubera
  *
@@ -20,9 +20,10 @@ public:
     mysql_driver(const mysql_driver& orig);
     virtual ~mysql_driver();
 
-    int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
+    cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
 
-    // 
+    cppdb::status_t Disconnect();
+    //
 
     void ExecQueryString(const std::string& query)
     {
@@ -33,7 +34,7 @@ public:
             return;
         }
         // build the result
-        // The number of columns for the most recent query on the connection. 
+        // The number of columns for the most recent query on the connection.
         MYSQL_RES * result = mysql_store_result(_conn);
 
         // no rows were returned
