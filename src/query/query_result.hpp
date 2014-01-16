@@ -8,9 +8,9 @@
 #ifndef QUERY_RESULT_HPP
 #define	QUERY_RESULT_HPP
 
-#include <cstdlib>
-
 #include "../cppdb.hpp"
+
+#include <cstdlib>
 
 CPPDB_NAMESPACE_BEGIN
 

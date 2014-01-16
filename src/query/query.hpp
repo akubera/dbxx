@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   query.hpp
  * Author: andrewkubera
- * 
+ *
  * Created on January 8, 2014, 5:35 PM
  */
 
@@ -13,6 +13,7 @@
 
 #include "query_result.hpp"
 
+#include <cstdlib>
 #include <string>
 
 CPPDB_NAMESPACE_BEGIN
@@ -53,7 +54,7 @@ CPPDB_NAMESPACE_END
 
 // include the templates
 #include "query.tcc"
-        
+
 typedef cppdb::Query<cppdb::SQLInt_t> IntQuery;
 
 #endif //QUERY_HPP
