@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   mysql_driver.h
  * Author: andrewkubera
  *
@@ -20,9 +20,10 @@ public:
     mysql_driver(const mysql_driver& orig);
     virtual ~mysql_driver();
 
-    int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
+    cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
 
-    // 
+    cppdb::status_t Disconnect();
+    //
 
     void ExecQueryString(const std::string& query)
     {
@@ -33,7 +34,7 @@ public:
             return;
         }
         // build the result
-        // The number of columns for the most recent query on the connection. 
+        // The number of columns for the most recent query on the connection.
         MYSQL_RES * result = mysql_store_result(_conn);
 
         // no rows were returned
@@ -53,7 +54,7 @@ public:
             size_t field_count = mysql_num_fields(result);
             MYSQL_FIELD *field_array = mysql_fetch_fields(result);
 
-            for (auto i = 0; i < field_count; i++) {
+            for (size_t i = 0; i < field_count; i++) {
                 std::pair<std::string, size_t> field(field_array[i].name, field_array[i].length);
                 returned_field_info.push_back(field);
             }
@@ -94,9 +95,9 @@ public:
         }
 
         size_t field_cnt = mysql_num_fields(fields);
-        for (auto i = 0; i < field_cnt; ++i) {
+        for (size_t i = 0; i < field_cnt; ++i) {
             MYSQL_FIELD *col = mysql_fetch_field_direct(fields, i);
-            printf("Column %d: %s\n", i, col->name);
+            std::cout << "Column " << i << ": " << col->name << std::endl;
         }
         mysql_free_result(fields);
     }
