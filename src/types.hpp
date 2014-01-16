@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   types.hpp
  * Author: andrewkubera
  *
@@ -17,6 +17,8 @@ CPPDB_NAMESPACE_BEGIN
 
     // type for ports (IP)
     typedef unsigned short port_t;
+
+    typedef short status_t;
 
     //
     // SQL types
