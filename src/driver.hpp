@@ -42,10 +42,22 @@ public:
      * @param username A username to authenticate with server
      * @param password A password to authenticate the username
      *
-     * @return Status
+     * @return Execution status
      */
-    virtual int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
+    virtual status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
 
+    /**
+     * Disconnect from the server.
+     * If Connected
+     *
+     * @return Execution status
+     */
+    virtual status_t Disconnect() = 0;
+
+    /**
+     * Get the name of the driver
+     * @return
+     */
     std::string Name()
     {
         return _name;
