@@ -20,7 +20,8 @@ public:
     odbc_driver(const odbc_driver& orig);
     virtual ~odbc_driver();
 
-    void Disconnect();
+    cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
+    cppdb::status_t Disconnect();
     void Query();
 
 protected:
