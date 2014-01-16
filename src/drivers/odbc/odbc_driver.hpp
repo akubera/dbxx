@@ -39,21 +39,8 @@ protected:
 
 };
 
-/*template <typename T>
-#void
-#odbc_driver::BindColumn(SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen) {
-//   SQLBindCol(stmt, 1, SQL_C_CHAR, target_val_ptr, buffsize, strlen);
-}*/
+extern "C" cppdb::Driver* create_driver();
+extern "C" void destroy_driver(cppdb::Driver* driver);
 
-
-template<>
-void
-odbc_driver::BindColumn<cppdb::SQLChar_t> (SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen) {
-    SQLBindCol(stmt, col_num, SQL_C_CHAR, target_val_ptr, buffsize, strlen);
-}
-
-template<>
-void
-odbc_driver::BindColumn<cppdb::SQLULong_t> (SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen) {
-    SQLBindCol(stmt, col_num, SQL_C_ULONG, target_val_ptr, buffsize, strlen);
-}
+// include template implementations
+#include "obdc_driver.tcc"

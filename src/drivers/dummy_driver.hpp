@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   dummy_driver.hpp
  * Author: andrewkubera
  *
@@ -20,6 +20,7 @@ public:
     int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
 
 protected:
+
 };
 
 extern "C" cppdb::Driver* create_driver();
