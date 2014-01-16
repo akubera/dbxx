@@ -11,7 +11,7 @@
 #include "mysql_driver.h"
 
 mysql_driver::mysql_driver() :
-_conn(mysql_init(nullptr))
+    _conn(mysql_init(nullptr))
 {
     // this really should not happen...
     if (_conn == nullptr) {
@@ -21,20 +21,21 @@ _conn(mysql_init(nullptr))
 }
 
 mysql_driver::mysql_driver(const mysql_driver& orig) :
-
-_host(orig._host),
-_port(orig._port),
-_username(orig._username),
-_password(orig._password)        
+  _conn(mysql_init(nullptr)),
+  _host(orig._host),
+  _port(orig._port),
+  _username(orig._username),
+  _password(orig._password),
+  _database(orig._database)
 {
-    auto status = mysql_real_connect(_conn, host.c_str(), username.c_str(), password.c_str(), database.c_str(), port, nullptr, 0);
+    auto status = mysql_real_connect(_conn, _host.c_str(), _username.c_str(), _password.c_str(), _database.c_str(), _port, nullptr, 0);
     if (!status) {
         std::cerr << "ERROR : " << mysql_error(_conn) << std::endl;
         exit(EXIT_FAILURE);
     }
 
     if (orig._conn) {
-        
+
     }
 }
 

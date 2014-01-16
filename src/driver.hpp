@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   driver.hpp
  * Author: andrewkubera
  *
@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include <regex>
@@ -37,10 +38,10 @@ public:
      *
      * @param host Hostname of the server to connect to
      * @param database Name of the database to use
-     * @param port Port number of the 
+     * @param port Port number of the remote server
      * @param username A username to authenticate with server
      * @param password A password to authenticate the username
-     * 
+     *
      * @return Status
      */
     virtual int Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
@@ -52,8 +53,10 @@ public:
 
 protected:
 
-    Driver(const std::string& name) : _name(name)
+    Driver(const std::string& name) :
+       _name(name)
     {
+      std::cout << "Constructing Driver '" << _name << "'" << std::endl;
     };
 
     const std::string _name;
