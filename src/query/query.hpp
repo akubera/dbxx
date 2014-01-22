@@ -14,6 +14,7 @@
 #include "query_result.hpp"
 
 #include <string>
+#include <tuple>
 
 CPPDB_NAMESPACE_BEGIN
 

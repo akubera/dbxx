@@ -15,15 +15,15 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-    // type for ports (IP)
-    typedef unsigned short port_t;
+// type for ports (IP)
+typedef unsigned short port_t;
 
-    //
-    // SQL types
-    //
-    typedef char    SQLByte_t;
-    typedef int16_t SQLInt_t;
-    typedef float   SQLSingle_t;
-    typedef double  SQLDouble_t;
+//
+// SQL types
+//
+typedef char    SQLByte_t;
+typedef int16_t SQLInt_t;
+typedef float   SQLSingle_t;
+typedef double  SQLDouble_t;
 
 CPPDB_NAMESPACE_END

@@ -10,6 +10,9 @@
 
 #include "../cppdb.hpp"
 
+#include <cstdlib>
+#include <tuple>
+
 CPPDB_NAMESPACE_BEGIN
 
 template <typename... _Tv>
@@ -27,6 +30,8 @@ public:
 
     Row<_Tv...> begin();
     Row<_Tv...> end();
+
+    std::tuple<_Tv...> GetAsTuple(size_t index);
 
 protected:
 

@@ -50,6 +50,13 @@ QueryResult<_Tv...>::end()
     return Row<_Tv...>::EmptyRow();
 }
 
+template <typename... _Tv>
+std::tuple<_Tv...>
+QueryResult<_Tv...>::GetAsTuple(size_t index) {
+  
+}
+
+
 
 
 CPPDB_NAMESPACE_END
