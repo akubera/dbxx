@@ -6,6 +6,7 @@
  */
 
 #include "connection.hpp"
+#include "driver_manager.hpp"
 
 #include <iostream>
 #include <cassert>
@@ -116,6 +117,9 @@ Connection::Connection(const std::string& cnx_string)
     std::cout << "Read in hostname '" << hostname << "'\n";
     std::cout << "Read in port '" << port_string << "'\n";
     std::cout << "Read in database name '" << db_name << "'" << std::endl;
+
+    // load the drivers
+    _driver = DriverManager::GetDriverWithName(protocol);
 
 }
 

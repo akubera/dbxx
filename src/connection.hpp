@@ -44,7 +44,7 @@ public:
 
     /**
      * Create a new connection using the same parameters as an existing connection
-     * 
+     *
      * @param orig The original connection
      */
     Connection(const Connection& orig);
@@ -58,6 +58,7 @@ public:
 
 protected:
 
+  std::shared_ptr<Driver> _driver;
 
 };
 

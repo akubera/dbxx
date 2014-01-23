@@ -34,10 +34,20 @@ public:
 
     static std::vector<std::string> GetDriverNames(const std::string& path = driver_path_default);
 
-    static Driver* GetDriverWithName(const std::string& driver_name);
+    static std::shared_ptr<Driver> GetDriverWithName(const std::string& driver_name);
+
+    static std::vector<std::string> SearchPath;
+    static void UnloadDriver(const std::string& name);
 
 protected:
-    static std::map<std::string, void*> _drivers;
+    static std::map<std::string, std::shared_ptr<Driver>> _drivers;
+    static std::map<std::string, void*> _driver_libraries;
+    static bool _drivers_loaded;
+
+protected:
+    static std::shared_ptr<Driver> FindDriver(const std::string& driver_name);
+    static std::shared_ptr<Driver> LoadDriver(void *, const std::string& name);
+
 };
 
 CPPDB_NAMESPACE_END
