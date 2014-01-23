@@ -6,6 +6,7 @@
  */
 
 #include "query_result.hpp"
+#include "query.hpp"
 
 #ifndef QUERY_RESULT_HPP
 #warning Including 'query_result.tcc' directly! You must only include query_result.hpp
@@ -49,6 +50,14 @@ QueryResult<_Tv...>::end()
 {
     return Row<_Tv...>::EmptyRow();
 }
+
+template <typename... _Tv>
+std::tuple<_Tv...>
+QueryResult<_Tv...>::GetAsTuple(size_t index)
+{
+  return std::tuple<_Tv...>();
+}
+
 
 
 

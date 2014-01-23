@@ -19,6 +19,7 @@ CPPDB_NAMESPACE_BEGIN
 
 class Driver
 {
+  // friend class DriverManager;
 public:
 
     Driver()

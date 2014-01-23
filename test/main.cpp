@@ -4,6 +4,7 @@
  */
 
 #include "cppdb.hpp"
+#include <iostream>
 
 int
 main()

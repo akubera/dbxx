@@ -15,6 +15,8 @@
 
 #include <cstdlib>
 #include <string>
+#include <tuple>
+#include <memory>
 
 CPPDB_NAMESPACE_BEGIN
 
@@ -35,6 +37,7 @@ public:
     cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
 
 protected:
+    std::weak_ptr<Connection> _cnx_ptr;
 
 public:
 
