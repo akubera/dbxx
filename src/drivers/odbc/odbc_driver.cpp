@@ -93,6 +93,14 @@ odbc_driver::Query()
     SQLFreeStmt(stmt, SQL_DROP);
 }
 
+template <typename... Tv>
+cppdb::QueryResult<Tv...>
+odbc_driver::ExecQuery(const cppdb::Query<Tv...>&)
+{
+
+}
+
+
 cppdb::status_t
 odbc_driver::Disconnect()
 {

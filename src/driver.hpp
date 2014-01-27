@@ -63,6 +63,10 @@ public:
         return _name;
     }
 
+    template <typename... Tv>
+    cppdb::QueryResult<Tv...> ExecQuery(const cppdb::Query<Tv...>&);
+
+
 protected:
 
     Driver(const std::string& name) :

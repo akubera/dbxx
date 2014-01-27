@@ -10,6 +10,9 @@
 #include "../../driver.hpp"
 #include "../../types.hpp"
 
+#include "../../query/query.hpp"
+#include "../../query/query_result.hpp"
+
 #include <sql.h>
 #include <sqlext.h>
 #include <sqltypes.h>
@@ -22,7 +25,14 @@ public:
 
     cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
     cppdb::status_t Disconnect();
+
     void Query();
+
+    template <typename... Tv>
+    cppdb::QueryResult<Tv...> ExecQuery(const cppdb::Query<Tv...>&);
+
+    template <typename... Tv>
+    cppdb::QueryResult<Tv...> Exec(cppdb::Connection&);
 
 protected:
     template <typename T>
