@@ -64,6 +64,13 @@ public:
         return _name;
     }
 
+    /**
+     * Return the default port number for the database's server
+     */
+    port_t DefaultPort() {
+      return 4201;
+    }
+
 protected:
 
     Driver(const std::string& name) :

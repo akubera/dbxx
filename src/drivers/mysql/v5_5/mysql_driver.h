@@ -102,6 +102,12 @@ public:
         mysql_free_result(fields);
     }
 
+    /** MYSQL Default port */
+    cppdb::port_t DefaultPort()
+    {
+      return 3306;
+    }
+
 protected:
     MYSQL *_conn;
 

@@ -108,7 +108,7 @@ create_driver()
 {
   return new odbc_driver();
 }
- 
+
 void
 destroy_driver(cppdb::Driver* driver) {
   delete driver;
