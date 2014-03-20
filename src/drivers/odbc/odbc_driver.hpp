@@ -10,10 +10,18 @@
 #include "../../driver.hpp"
 #include "../../types.hpp"
 
+// ODBC header
 #include <sql.h>
+
+// ODBC #define macros
 #include <sqlext.h>
+
+// ODBC typedefs
 #include <sqltypes.h>
 
+/**
+ * CppDB Driver for ODBC connections
+ */
 class odbc_driver : public cppdb::Driver {
 public:
     odbc_driver();
@@ -40,8 +48,11 @@ protected:
 
 };
 
-extern "C" cppdb::Driver* create_driver();
-extern "C" void destroy_driver(cppdb::Driver* driver);
+// callable functions from outside the driver
+extern "C" {
+  cppdb::Driver* create_driver();
+  void destroy_driver(cppdb::Driver* driver);
+}
 
 // include template implementations
 #include "obdc_driver.tcc"

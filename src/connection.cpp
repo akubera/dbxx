@@ -120,7 +120,11 @@ Connection::Connection(const std::string& cnx_string)
 
     // load the drivers
     _driver = DriverManager::GetDriverWithName(protocol);
-
+    std::cout << "Loaded driver " << _driver << "\n";
+    
+    if (_driver == nullptr) {
+      throw new NoDriverException;
+    }
 }
 
 Connection::Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port)

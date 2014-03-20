@@ -14,7 +14,6 @@
 
 namespace fs = boost::filesystem;
 
-
 CPPDB_NAMESPACE_BEGIN
 
 std::map<std::string, void*> DriverManager::_driver_libraries;
@@ -115,6 +114,7 @@ DriverManager::GetDriverWithName(const std::string& driver_name) {
     if (!_drivers_loaded) {
         LoadDrivers();
     }
+
     auto found = _drivers.find(driver_name);
     if (found != _drivers.end()) {
         return found->second;
@@ -132,6 +132,12 @@ DriverManager::GetDriverWithName(const std::string& driver_name) {
 std::shared_ptr<Driver>
 DriverManager::LoadDriver(void *lib, const std::string& name) {
     auto create = (Driver* (*)())dlsym(lib, "create_driver");
+    if (create == nullptr) {
+      std::cerr << "[DriverManager::LoadDriver] " << dlerror() << "\n";
+      std::cerr << "[DriverManager::LoadDriver] Failed to load the 'create_driver' function from the shared library.\n";
+      return nullptr;
+    }
+
     std::shared_ptr<Driver> res(create());
     _drivers[name] = res;
     return res;

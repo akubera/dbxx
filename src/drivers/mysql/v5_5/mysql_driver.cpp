@@ -65,3 +65,16 @@ mysql_driver::Disconnect() {
     _conn = nullptr;
     return 0;
 }
+
+cppdb::Driver*
+create_driver()
+{
+    return new mysql_driver;
+}
+
+void
+destroy_driver(cppdb::Driver* driver)
+{
+    delete driver;
+}
+

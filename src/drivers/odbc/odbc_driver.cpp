@@ -103,5 +103,13 @@ odbc_driver::Disconnect()
     return 1;
 }
 
-
-
+cppdb::Driver*
+create_driver()
+{
+  return new odbc_driver();
+}
+ 
+void
+destroy_driver(cppdb::Driver* driver) {
+  delete driver;
+}

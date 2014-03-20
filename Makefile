@@ -2,9 +2,11 @@
 # Makefile
 #
 
+SYSNAME := $(shell uname)
+
 # set compiler
 
-ifeq (`uname`,Darwin)
+ifeq (${SYSNAME},Darwin)
   CC = clang
   CXX = clang++
 else

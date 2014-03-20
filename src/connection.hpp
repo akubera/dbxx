@@ -10,6 +10,7 @@
 #include "cppdb.hpp"
 #include "driver.hpp"
 #include "driver_manager.hpp"
+#include "exceptions.hpp"
 
 #include <string>
 
