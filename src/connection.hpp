@@ -55,8 +55,6 @@ public:
      */
     virtual ~Connection();
 
-
-
 protected:
 
   std::shared_ptr<Driver> _driver;

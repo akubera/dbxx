@@ -67,8 +67,8 @@ Connection::Connection(const std::string& cnx_string)
         password = std::string(cnx_string.begin() + colon_position + 1, cnx_string.begin() + at_position);
 
         ptr = at_position + 1;
-    // no '@' char, use the default username and password?
     }
+    // no '@' char, use the default username and password?
     else {
 
     }
@@ -118,6 +118,8 @@ Connection::Connection(const std::string& cnx_string)
     std::cout << "Read in port '" << port_string << "'\n";
     std::cout << "Read in database name '" << db_name << "'" << std::endl;
 
+    cppdb::port_t port_num = std::stoi(port_string);
+
     // load the drivers
     _driver = DriverManager::GetDriverWithName(protocol);
     std::cout << "Loaded driver " << _driver << "\n";
@@ -125,6 +127,9 @@ Connection::Connection(const std::string& cnx_string)
     if (_driver == nullptr) {
       throw new NoDriverException;
     }
+
+    status_t status = _driver->Connect(hostname, db_name, port_num, username, password);
+    std::cout << "Connection returned " << status << "\n";
 }
 
 Connection::Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port)

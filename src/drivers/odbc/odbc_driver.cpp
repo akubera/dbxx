@@ -7,6 +7,8 @@
 
 #include "odbc_driver.hpp"
 
+#include "connection.hpp"
+
 #define SQL_STAT_SUCCESS(s) ((s == SQL_SUCCESS) || (s == SQL_SUCCESS_WITH_INFO))
 
 odbc_driver::odbc_driver()
@@ -24,7 +26,14 @@ odbc_driver::odbc_driver()
         throw std::exception();
     }
 
-    SQLAllocHandle(SQL_HANDLE_DBC, _env, &_hdbc);
+    status = SQLAllocHandle(SQL_HANDLE_DBC, _env, &_hdbc);
+
+if (!SQL_SUCCEEDED(status))
+{
+  extract_error("SQLAllocHandle for dbc", _env, SQL_HANDLE_ENV);
+  exit(1);
+}
+
 
 }
 
@@ -48,9 +57,49 @@ odbc_driver::Connect(const std::string& host, const std::string& database, cppdb
         (SQLCHAR *)username.c_str(), (SQLSMALLINT)username.size(),
         (SQLCHAR *)password.c_str(), (SQLSMALLINT)password.size());
 
+    std::cout << "SQLConnect " << status << "\n";
     if (SQL_STAT_SUCCESS(status)) {
         return 0;
     }
+    
+   //  SQLError(
+//       SQLHENV henv,                   /* 32-bit input */
+//   SQLHDBC hdbc,                   /* 32-bit input */
+//   SQLHSTMT hstmt,                 /* 32-bit input */
+//   SQLCHAR *Sqlstate,              /* pointer to char* output -- char[5+1] */
+//   SQLINTEGER *NativeError,        /* pointer to 32-bit output */
+//   SQLCHAR *MessageText,           /* pointer to char* output */
+//   SQLSMALLINT BufferLength,       /* 16-bit input */
+//   SQLSMALLINT *TextLength         /* pointer to 16-bit output */
+//   );
+
+
+    // create statement handle
+    SQLHSTMT hstmt = nullptr;
+    // allocate space for the statment
+    SQLAllocStmt(_hdbc, &hstmt);
+
+    SQLCHAR Sqlstate[6];
+    SQLINTEGER NativeError {0};
+    SQLCHAR MessageText[1024];
+    SQLSMALLINT TextLength {0};
+ SQLError( _env, _hdbc,
+          hstmt,
+          Sqlstate,      
+          &NativeError, 
+  MessageText,    
+  sizeof(MessageText),
+  &TextLength);
+    
+    std::cout << "Error : " << MessageText << "\n";
+    
+    
+    
+    
+    
+    
+    extract_error("SQLConnect", _env, SQL_HANDLE_ENV);
+
     // SQL_ERROR, SQL_INVALID_HANDLE, or SQL_STILL_EXECUTING
     return (cppdb::status_t)status;
 }
