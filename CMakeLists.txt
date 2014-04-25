@@ -13,6 +13,7 @@ set (CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
 set (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/drivers)
 
+# Use environment variable CPPDB_PREFIX as the install prefix if set
 if (NOT "$ENV{CPPDB_PREFIX}" STREQUAL "")
   set (CMAKE_INSTALL_PREFIX $ENV{CPPDB_PREFIX})
 endif()
@@ -47,10 +48,48 @@ endif ()
 find_package (PkgConfig REQUIRED)
 
 # Define driver options
-option (DRIVER_MYSQL "Enable Support for mysql databases" OFF)
+option (DRIVER_MYSQL "Enable Support for mysql databases" ON)
 option (DRIVER_PGSQL "Enable Support for postgres databases" OFF)
 option (DRIVER_SQLITE "Enable Support for sqlite databases" OFF)
-option (DRIVER_ODBC "Enable Support for connecting to databases using ODBC" OFF)
+option (DRIVER_ODBC "Enable Support for connecting to databases using ODBC" ON)
+
+set (DRIVER_ERROR false)
+
+if (DRIVER_MYSQL)
+  find_package (MySQL)
+  if (NOT ${MYSQL_FOUND}) 
+    message (SEND_ERROR "Could not find 'MYSQL'")
+    set (DRIVER_ERROR true)
+  endif ()
+endif (DRIVER_MYSQL)
+
+if (DRIVER_PGSQL)
+  find_package (PGSQL)
+  if (NOT ${PGSQL_FOUND})
+    message (SEND_ERROR "Could not find 'PGSQL'")
+    set (DRIVER_ERROR true)
+  endif ()
+endif (DRIVER_PGSQL)
+
+if (DRIVER_SQLITE)
+  find_package (SQLITE)
+  if (NOT ${SQLITE_FOUND})
+    message (SEND_ERROR "Could not find 'SQLITE'")
+    set (DRIVER_ERROR true)
+  endif ()
+endif (DRIVER_SQLITE)
+
+if (DRIVER_ODBC)
+  find_package (ODBC)
+  if (NOT ${ODBC_FOUND})
+    message (SEND_ERROR "Could not find 'ODBC'")
+    set (DRIVER_ERROR true)
+  endif ()
+endif (DRIVER_ODBC)
+
+if (DRIVER_ERROR)
+  message (FATAL_ERROR "There were problems loading driver libraries")
+endif (DRIVER_ERROR)
 
 add_subdirectory (src)
 add_subdirectory (test)

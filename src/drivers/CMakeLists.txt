@@ -9,16 +9,14 @@ target_link_libraries (_dummy_driver ${BOOST_LIBS})
 
 # TODO : Add logic to only choose the drivers one selects to build
 
-find_package (MySQL)
 
-if (${MYSQL_FOUND})
+if (DRIVER_MYSQL)
 add_subdirectory(mysql)
-endif (${MYSQL_FOUND})
+endif (DRIVER_MYSQL)
 
-find_package (ODBC)
-
-if (${ODBC_FOUND})
+if (DRIVER_ODBC)
 add_subdirectory(odbc)
-endif (${ODBC_FOUND})
+endif (DRIVER_ODBC)
+
 
 #add_subdirectory(postgres/v09_3)
