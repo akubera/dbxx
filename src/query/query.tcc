@@ -33,29 +33,29 @@ template <typename... _Tv>
 QueryResult<_Tv...>
 Query<_Tv...>::Exec(cppdb::Connection&)
 {
-    QueryResult < _Tv...> res;
-    return res;
+  QueryResult < _Tv...> res;
+  return res;
 }
 
 template <typename... _Tv>
 Query<_Tv...>&
 Query<_Tv...>::select(const std::string& x)
 {
-    return *this;
+  return *this;
 };
 
 template <typename... _Tv>
 Query<_Tv...>&
 Query<_Tv...>::from(const std::string&)
 {
-    return *this;
+  return *this;
 };
 
 template <typename... _Tv>
 Query<_Tv...>&
 Query<_Tv...>::where(const std::string&)
 {
-    return *this;
+  return *this;
 };
 
 
