@@ -26,18 +26,17 @@ const std::regex driver_file_regex("lib_([^_]*)_driver\\..*");
 
 class Driver;
 
-class DriverManager
-{
+class DriverManager {
 public:
 
-    static void LoadDrivers(const std::string& path = driver_path_default);
+  static void LoadDrivers(const std::string& path = driver_path_default);
 
-    static std::vector<std::string> GetDriverNames(const std::string& path = driver_path_default);
+  static std::vector<std::string> GetDriverNames(const std::string& path = driver_path_default);
 
-    static Driver* GetDriverWithName(const std::string& driver_name);
+  static Driver* GetDriverWithName(const std::string& driver_name);
 
 protected:
-    static std::map<std::string, void*> _drivers;
+  static std::map<std::string, void*> _drivers;
 };
 
 CPPDB_NAMESPACE_END

@@ -12,7 +12,7 @@
 
 pgsql_driver::pgsql_driver():
   cppdb::Driver(),
-  
+
   // Connect using library default parameters - we shouldn't do this here...
   _conn(PQconnectdb(nullptr))
 {
@@ -47,12 +47,12 @@ pgsql_driver::~pgsql_driver()
 cppdb::status_t
 pgsql_driver::Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password)
 {
-    //    mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd, const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag)
-//    auto status = mysql_real_connect(_conn, host.c_str(), username.c_str(), password.c_str(), database.c_str(), port, nullptr, 0);
-//    if (!status) {
-//        std::cerr << "ERROR : " << mysql_error(_conn) << std::endl; //?
-//        exit(EXIT_FAILURE);
-//    }
+  //    mysql_real_connect(MYSQL *mysql, const char *host, const char *user, const char *passwd, const char *db, unsigned int port, const char *unix_socket, unsigned long client_flag)
+  //    auto status = mysql_real_connect(_conn, host.c_str(), username.c_str(), password.c_str(), database.c_str(), port, nullptr, 0);
+  //    if (!status) {
+  //        std::cerr << "ERROR : " << mysql_error(_conn) << std::endl; //?
+  //        exit(EXIT_FAILURE);
+  //    }
   std::stringstream ss;
   ss << "dbname = " << database;
   _conn = PQconnectdb(ss.str().c_str());
@@ -67,8 +67,9 @@ pgsql_driver::Connect(const std::string& host, const std::string& database, cppd
 }
 
 cppdb::status_t
-pgsql_driver::Disconnect() {
+pgsql_driver::Disconnect()
+{
   PQfinish(_conn);
-  _conn = nullptr;    
+  _conn = nullptr;
   return 0;
 }

@@ -17,28 +17,27 @@ CPPDB_NAMESPACE_BEGIN
  * Row is a single result element from an executed query
  */
 template <typename... _Tv>
-class Row
-{
+class Row {
 public:
-    Row();
-    Row(QueryResult<_Tv...>*);
-    Row(const Row& orig);
-    virtual ~Row();
+  Row();
+  Row(QueryResult<_Tv...>*);
+  Row(const Row& orig);
+  virtual ~Row();
 
-    static Row<_Tv...> EmptyRow();
-    
+  static Row<_Tv...> EmptyRow();
+
 protected:
-    /**
-     * Position index of row in query result
-     */
-    size_t _index;
+  /**
+   * Position index of row in query result
+   */
+  size_t _index;
 
-    /**
-     * An empty row which is used to denote the end of a query result
-     */
-    bool _empty {false};
-    
-    QueryResult<_Tv...> *_query_res;
+  /**
+   * An empty row which is used to denote the end of a query result
+   */
+  bool _empty{false};
+
+  QueryResult<_Tv...> *_query_res;
 };
 
 CPPDB_NAMESPACE_END

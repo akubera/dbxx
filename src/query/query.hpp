@@ -21,31 +21,29 @@ CPPDB_NAMESPACE_BEGIN
 class Connection;
 
 template <typename... _Tv>
-class Query
-{
+class Query {
 public:
-    Query();
-    Query(const Query& orig);
-    virtual ~Query();
+  Query();
+  Query(const Query& orig);
+  virtual ~Query();
 
-    Query<_Tv...>& select(const std::string&);
-    Query<_Tv...>& where(const std::string&);
-    Query<_Tv...>& from(const std::string&);
+  Query<_Tv...>& select(const std::string&);
+  Query<_Tv...>& where(const std::string&);
+  Query<_Tv...>& from(const std::string&);
 
-    cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
+  cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
 
 protected:
 
 public:
 
-    class Condition
-    {
-    public:
+  class Condition {
+  public:
 
-        Condition(const std::string&)
-        {
-        };
+    Condition(const std::string&)
+    {
     };
+  };
 
 
 };

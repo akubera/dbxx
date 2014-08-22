@@ -18,17 +18,16 @@ template <typename... _Tv>
 class Row;
 
 template <typename... _Tv>
-class QueryResult
-{
+class QueryResult {
 public:
-    QueryResult();
-    QueryResult(const QueryResult& orig);
-    virtual ~QueryResult();
+  QueryResult();
+  QueryResult(const QueryResult& orig);
+  virtual ~QueryResult();
 
-    Row<_Tv...> getRow(size_t rownumber);
+  Row<_Tv...> getRow(size_t rownumber);
 
-    Row<_Tv...> begin();
-    Row<_Tv...> end();
+  Row<_Tv...> begin();
+  Row<_Tv...> end();
 
 protected:
 

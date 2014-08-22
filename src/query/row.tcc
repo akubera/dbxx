@@ -15,14 +15,14 @@
 CPPDB_NAMESPACE_BEGIN
 
 template <typename... _Tv>
-Row<_Tv...>::Row() :
-_query_res(nullptr)
+Row<_Tv...>::Row():
+  _query_res(nullptr)
 {
 }
 
 template <typename... _Tv>
-Row<_Tv...>::Row(QueryResult<_Tv...>* source) :
-_query_res(source)
+Row<_Tv...>::Row(QueryResult<_Tv...>* source):
+  _query_res(source)
 {
 
 }
@@ -41,9 +41,9 @@ template <typename... _Tv>
 Row<_Tv...>
 Row<_Tv...>::EmptyRow()
 {
-    Row<_Tv...> result;
-    result._empty = true;
-    return result;
+  Row < _Tv...> result;
+  result._empty = true;
+  return result;
 }
 
 CPPDB_NAMESPACE_END
