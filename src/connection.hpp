@@ -15,46 +15,55 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-class Connection
-{
+/**
+ * Connection class to a remote server. Acts as a multiplexor, allowing multiple
+ * connections (presumably to multiple databases) to a single server. The
+ * 'type' of database to connect to is either interpreted from the 
+ */
+class Connection {
 public:
 
-    /**
-     * Create connection object without connecting to a server
-     */
-    Connection();
+  /**
+   * Create connection object without connecting to a server
+   */
+  Connection();
 
-    /**
-     * Create a connection based on a connection string
-     *
-     * @param cnx_string A string in the form of "driver://[username:password@]host[:port][/database]"
-     */
-    Connection(const std::string& cnx_string);
+  /**
+   * Create a connection based on a connection string
+   *
+   * @param cnx_string A string in the form of "driver://[username:password@]host[:port][/database]"
+   */
+  Connection(const std::string& cnx_string);
 
-    /**
-     * Create object and connect to a database
-     *
-     * @param db_name   Name of the database to select
-     * @param host      Hostname or IP address of the 
-     * @param username  Username of user with 
-     * @param password  Password of the user with permission to 
-     * @param port      TCP port number the remote server is listening to
-     */
-    Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port);
+  /**
+   * Create object and connect to a database
+   *
+   * @param db_name   Name of the database to select
+   * @param host      Hostname or IP address of the 
+   * @param username  Username of user with 
+   * @param password  Password of the user with permission to 
+   * @param port      TCP port number the remote server is listening to
+   */
+  Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port);
 
-    /**
-     * Create a new connection using the same parameters as an existing connection
-     * 
-     * @param orig The original connection
-     */
-    Connection(const Connection& orig);
+  /**
+   * Wrap a connection around an existing driver
+   *
+   * @param driver
+   */
+  Connection(Driver *driver);
 
-    /**
-     * Destroy connection. Disconnects from server and destroys all tables.
-     */
-    virtual ~Connection();
+  /**
+   * Create a new connection using the same parameters as an existing connection
+   * 
+   * @param orig The original connection
+   */
+  Connection(const Connection& orig);
 
-
+  /**
+   * Destroy connection. Disconnects from server and destroys all tables.
+   */
+  virtual ~Connection();
 
 protected:
 

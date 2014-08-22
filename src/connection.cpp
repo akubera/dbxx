@@ -118,6 +118,11 @@ Connection::Connection(const std::string& db_name, const std::string& host, cons
 {
 }
 
+Connection::Connection(Driver *driver)
+{
+  
+}
+
 Connection::Connection(const Connection& orig)
 {
 }
