@@ -49,7 +49,7 @@ find_package (PkgConfig REQUIRED)
 
 # Define driver options
 option (DRIVER_MYSQL "Enable Support for mysql databases" ON)
-option (DRIVER_PGSQL "Enable Support for postgres databases" OFF)
+option (DRIVER_PGSQL93 "Enable Support for postgres databases" ON)
 option (DRIVER_SQLITE "Enable Support for sqlite databases" OFF)
 option (DRIVER_ODBC "Enable Support for connecting to databases using ODBC" ON)
 
@@ -63,13 +63,13 @@ if (DRIVER_MYSQL)
   endif ()
 endif (DRIVER_MYSQL)
 
-if (DRIVER_PGSQL)
+if (DRIVER_PGSQL93)
   find_package (PGSQL)
   if (NOT ${PGSQL_FOUND})
     message (SEND_ERROR "Could not find 'PGSQL'")
     set (DRIVER_ERROR true)
   endif ()
-endif (DRIVER_PGSQL)
+endif (DRIVER_PGSQL93)
 
 if (DRIVER_SQLITE)
   find_package (SQLITE)

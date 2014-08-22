@@ -14,6 +14,10 @@ if (DRIVER_MYSQL)
 add_subdirectory(mysql)
 endif (DRIVER_MYSQL)
 
+if (DRIVER_PGSQL93)
+add_subdirectory(pgsql/v9.3)
+endif (DRIVER_PGSQL93)
+
 if (DRIVER_ODBC)
 add_subdirectory(odbc)
 endif (DRIVER_ODBC)

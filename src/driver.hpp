@@ -65,7 +65,7 @@ public:
 
 protected:
 
-    Driver(const std::string& name) :
+    Driver(const std::string& name):
        _name(name)
     {
       std::cout << "Constructing Driver '" << _name << "'" << std::endl;

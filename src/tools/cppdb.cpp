@@ -54,7 +54,8 @@ usage()
     cout << "  version" "\t\t" "Print the version of cppdb." << endl;
 }
 
-int run_one_arg(const std::string& func_name)
+int
+run_one_arg(const std::string& func_name)
 {
     if (func_name == "drivers") {
         return drivers();
