@@ -82,7 +82,6 @@ public:
       // loop through each returned row of the query
       while ((row = mysql_fetch_row(result))) {
         // Convert the row to a vector of strings and add to the result  
-//         res.push_back(std::vector<std::string>(row, row+field_count));        
         res.emplace_back(row, row+field_count);
       }
 
@@ -138,3 +137,9 @@ protected:
   MYSQL_RES *res;
   MYSQL_ROW row;
 };
+
+// callable functions from outside the driver
+extern "C" {
+  cppdb::Driver* create_driver();
+  void destroy_driver(cppdb::Driver* driver);
+}

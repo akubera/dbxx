@@ -1,5 +1,5 @@
 /*
- * odbc_test_0.cpp
+ * mysql_test_0.cpp
  *
  */
 
@@ -15,12 +15,14 @@ using namespace cppdb;
 
 int main()
 {
-  cout << "ODBC Test : " << "00" << std::endl;
+  cout << "MYSQL Test : " << "00" << std::endl;
 
-  Connection *cnx = new Connection("odbc://andrew:password@localhost:5432/new_data");
+  Connection *cnx = new Connection("mysql://andrew:password@localhost:3366/new_data");
   std::cout << "Connection " << (cnx == nullptr ? "unsuccessful" : "successful") << "\n";
   Query<string> q;
-  
+
+
+
   
   return 0;
 }
