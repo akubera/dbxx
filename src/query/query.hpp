@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   query.hpp
  * Author: andrewkubera
- * 
+ *
  * Created on January 8, 2014, 5:35 PM
  */
 
@@ -13,38 +13,40 @@
 
 #include "query_result.hpp"
 
+#include <cstdlib>
 #include <string>
+#include <tuple>
+#include <memory>
 
 CPPDB_NAMESPACE_BEGIN
 
 class Connection;
 
 template <typename... _Tv>
-class Query
-{
+class Query {
 public:
-    Query();
-    Query(const Query& orig);
-    virtual ~Query();
+  Query();
+  Query(const Query& orig);
+  virtual ~Query();
 
-    Query<_Tv...>& select(const std::string&);
-    Query<_Tv...>& where(const std::string&);
-    Query<_Tv...>& from(const std::string&);
+  Query<_Tv...>& select(const std::string&);
+  Query<_Tv...>& where(const std::string&);
+  Query<_Tv...>& from(const std::string&);
 
-    cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
+  cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
 
 protected:
+  std::weak_ptr<Connection> _cnx_ptr;
 
 public:
 
-    class Condition
-    {
-    public:
+  class Condition {
+  public:
 
-        Condition(const std::string&)
-        {
-        };
+    Condition(const std::string&)
+    {
     };
+  };
 
 
 };
@@ -53,7 +55,7 @@ CPPDB_NAMESPACE_END
 
 // include the templates
 #include "query.tcc"
-        
+
 typedef cppdb::Query<cppdb::SQLInt_t> IntQuery;
 
 #endif //QUERY_HPP

@@ -2,9 +2,11 @@
 # Makefile
 #
 
+SYSNAME := $(shell uname)
+
 # set compiler
 
-ifeq (`uname`,Darwin)
+ifeq (${SYSNAME},Darwin)
   CC = clang
   CXX = clang++
 else
@@ -19,8 +21,8 @@ install:
 	cd build && make install all
 
 clean:
-	rm -r build/CM*
-	rm -r build/src
+	rm -fr build/CM*
+	rm -fr build/src
 
 cleanall:
 	rm -rf build/*
