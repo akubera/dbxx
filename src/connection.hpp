@@ -16,8 +16,12 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-class Connection
-{
+/**
+ * Connection class to a remote server. Acts as a multiplexor, allowing multiple
+ * connections (presumably to multiple databases) to a single server. The
+ * 'type' of database to connect to is either interpreted from the 
+ */
+class Connection {
 public:
 
   /**
@@ -44,8 +48,15 @@ public:
   Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port);
 
   /**
-   * Create a new connection using the same parameters as an existing connection
+   * Wrap a connection around an existing driver
    *
+   * @param driver
+   */
+  Connection(Driver *driver);
+
+  /**
+   * Create a new connection using the same parameters as an existing connection
+   * 
    * @param orig The original connection
    */
   Connection(const Connection& orig);

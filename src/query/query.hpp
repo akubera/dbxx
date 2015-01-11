@@ -23,8 +23,7 @@ CPPDB_NAMESPACE_BEGIN
 class Connection;
 
 template <typename... _Tv>
-class Query
-{
+class Query {
 public:
   Query();
   Query(const Query& orig);

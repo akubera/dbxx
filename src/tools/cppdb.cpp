@@ -34,12 +34,12 @@ int main(int argc, char** argv)
   cmd_name = args[0];
 
   if (args.size() == 1) {
-      usage();
-      return 0;
+    usage();
+    return 0;
   }
 
   if (args.size() == 2) {
-      return run_one_arg(args[1]);
+    return run_one_arg(args[1]);
   }
 
   return EXIT_FAILURE;
@@ -54,7 +54,8 @@ usage()
   cout << "  version" "\t\t" "Print the version of cppdb." << endl;
 }
 
-int run_one_arg(const std::string& func_name)
+int
+run_one_arg(const std::string& func_name)
 {
   if (func_name == "drivers") {
     return drivers();

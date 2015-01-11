@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   driver_manager.h
  * Author: andrewkubera
  *
@@ -31,8 +31,7 @@ class Driver;
  *
  * Static class which handles loading of shared library files.
  */
-class DriverManager
-{
+class DriverManager {
 public:
 
   /**
@@ -40,7 +39,7 @@ public:
    *
    * Parse through the driver path looking for any shared libraries which
    * match driver_file_regex, and load them (lazily) into the _driver_libraries map.
-   * If drivers haven not been loaded, it will call LoadDrivers(). 
+   * If drivers haven not been loaded, it will call LoadDrivers().
    */
   static void LoadDrivers(const std::string& path = driver_path_default);
 
@@ -54,7 +53,7 @@ public:
   /**
    * UnloadDriver
    *
-   * Kills all connections using driver with name 'name', then deletes the driver and 
+   * Kills all connections using driver with name 'name', then deletes the driver and
    * unloads the shared library file.
    */
   static void UnloadDriver(const std::string& name);
@@ -70,7 +69,7 @@ public:
    * GetDriverWithName
    *
    * Returns a shared pointer to the driver identified by string diver_name. If no driver
-   * is found, it will return nullptr. If drivers haven not been loaded, it will call 
+   * is found, it will return nullptr. If drivers haven not been loaded, it will call
    * LoadDrivers().
    */
   static std::shared_ptr<Driver> GetDriverWithName(const std::string& driver_name);

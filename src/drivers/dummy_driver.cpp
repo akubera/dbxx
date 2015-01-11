@@ -24,25 +24,24 @@ dummy_driver::~dummy_driver()
 cppdb::status_t
 dummy_driver::Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password)
 {
-    return 0;
+  return 0;
 }
 
 cppdb::status_t
 dummy_driver::Disconnect()
 {
-    return 0;
+  return 0;
 }
-
 
 cppdb::Driver*
 create_driver()
 {
-    return new dummy_driver;
+  return new dummy_driver;
 }
 
 void
 destroy_driver(cppdb::Driver* driver)
 {
-    delete driver;
+  delete driver;
 }
 

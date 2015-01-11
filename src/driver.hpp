@@ -17,14 +17,9 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-class Driver
-{
-  // friend class DriverManager;
+class Driver {
 public:
 
-  /**
-   * Driver object
-   */
   Driver()
   {
   };

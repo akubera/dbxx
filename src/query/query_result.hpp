@@ -35,6 +35,7 @@ public:
 
   virtual ~QueryResult();
 
+
   /**
    * Return a row at specified index
    *

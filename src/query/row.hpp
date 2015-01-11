@@ -24,14 +24,13 @@ CPPDB_NAMESPACE_BEGIN
  * Row is a single result element from an executed query
  */
 template <typename... _Tv>
-class Row
-{
+class Row {
 public:
   Row();
   Row(std::shared_ptr<QueryResult<_Tv...>>);
-  Row(const Row& orig);
+  Row(const Row<_Tv...>&);
   virtual ~Row();
-  
+
   Row<_Tv...>& operator++();
   std::tuple<_Tv...> operator*();
   bool operator==(const Row<_Tv...>& rhs);
