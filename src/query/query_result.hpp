@@ -26,8 +26,7 @@ template <typename... _Tv>
 class Row;
 
 template <typename... _Tv>
-class QueryResult
-{
+class QueryResult {
 public:
 
   // Empty Query 
@@ -49,9 +48,8 @@ public:
   Row<_Tv...> end();
 
 protected:
-    std::shared_ptr<Query<_Tv...>> _parent;
-    std::weak_ptr<Connection> _cnx_ptr;
-
+  std::shared_ptr<Query<_Tv...>> _parent;
+  std::weak_ptr<Connection> _cnx_ptr;
 };
 
 CPPDB_NAMESPACE_END

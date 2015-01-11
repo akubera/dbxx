@@ -26,29 +26,28 @@ template <typename... _Tv>
 class Query
 {
 public:
-    Query();
-    Query(const Query& orig);
-    virtual ~Query();
+  Query();
+  Query(const Query& orig);
+  virtual ~Query();
 
-    Query<_Tv...>& select(const std::string&);
-    Query<_Tv...>& where(const std::string&);
-    Query<_Tv...>& from(const std::string&);
+  Query<_Tv...>& select(const std::string&);
+  Query<_Tv...>& where(const std::string&);
+  Query<_Tv...>& from(const std::string&);
 
-    cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
+  cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
 
 protected:
-    std::weak_ptr<Connection> _cnx_ptr;
+  std::weak_ptr<Connection> _cnx_ptr;
 
 public:
 
-    class Condition
-    {
-    public:
+  class Condition {
+  public:
 
-        Condition(const std::string&)
-        {
-        };
+    Condition(const std::string&)
+    {
     };
+  };
 
 
 };

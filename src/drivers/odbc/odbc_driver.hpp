@@ -24,28 +24,27 @@
  */
 class odbc_driver : public cppdb::Driver {
 public:
-    odbc_driver();
-    odbc_driver(const odbc_driver& orig);
-    virtual ~odbc_driver();
+  odbc_driver();
+  odbc_driver(const odbc_driver& orig);
+  virtual ~odbc_driver();
 
-    cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
-    cppdb::status_t Disconnect();
-    void Query();
-
-protected:
-    template <typename T>
-    void BindColumn(SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen);
+  cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
+  cppdb::status_t Disconnect();
+  void Query();
 
 protected:
-    // sql environment
-    SQLHENV _env;
+  template <typename T>
+  void BindColumn(SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen);
 
-    // sql connection
-    SQLHDBC _hdbc;
+protected:
+  // sql environment
+  SQLHENV _env;
 
-    // sql status
-    char  _sql_stat[10];
+  // sql connection
+  SQLHDBC _hdbc;
 
+  // sql status
+  char  _sql_stat[10];
 };
 
 // callable functions from outside the driver

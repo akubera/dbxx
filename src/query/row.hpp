@@ -27,31 +27,31 @@ template <typename... _Tv>
 class Row
 {
 public:
-    Row();
-    Row(std::shared_ptr<QueryResult<_Tv...>>);
-    Row(const Row& orig);
-    virtual ~Row();
-    
-    Row<_Tv...>& operator++();
-    std::tuple<_Tv...> operator*();
-    bool operator==(const Row<_Tv...>& rhs);
+  Row();
+  Row(std::shared_ptr<QueryResult<_Tv...>>);
+  Row(const Row& orig);
+  virtual ~Row();
+  
+  Row<_Tv...>& operator++();
+  std::tuple<_Tv...> operator*();
+  bool operator==(const Row<_Tv...>& rhs);
 
-    static Row<_Tv...> EmptyRow();
+  static Row<_Tv...> EmptyRow();
 
 protected:
-    /**
-     * Position index of row in query result
-     */
-    size_t _index {0};
+  /**
+   * Position index of row in query result
+   */
+  size_t _index {0};
 
-    /**
-     * An empty row which is used to denote the end of a query result
-     */
-    bool _empty {false};
+  /**
+   * An empty row which is used to denote the end of a query result
+   */
+  bool _empty {false};
 
-    std::tuple<_Tv...> _data;
+  std::tuple<_Tv...> _data;
 
-    std::shared_ptr<QueryResult<_Tv...>> _query_res;
+  std::shared_ptr<QueryResult<_Tv...>> _query_res;
 };
 
 CPPDB_NAMESPACE_END

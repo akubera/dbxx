@@ -30,7 +30,7 @@ public:
 protected:
   Table(){};
 
-}
+};
 
 
 CPPDB_NAMESPACE_END

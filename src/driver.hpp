@@ -22,64 +22,73 @@ class Driver
   // friend class DriverManager;
 public:
 
-    Driver()
-    {
-    };
+  /**
+   * Driver object
+   */
+  Driver()
+  {
+  };
 
-    Driver(const Driver& orig)
-    {
-    };
+  /**
+   * Copy Constructor
+   */
+  Driver(const Driver& orig)
+  {
+  };
 
-    virtual ~Driver()
-    {
-    };
+  /**
+   * Distructor
+   */
+  virtual ~Driver()
+  {
+  };
 
-    /**
-     * Connect to a server
-     *
-     * @param host Hostname of the server to connect to
-     * @param database Name of the database to use
-     * @param port Port number of the remote server
-     * @param username A username to authenticate with server
-     * @param password A password to authenticate the username
-     *
-     * @return Execution status
-     */
-    virtual status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
+  /**
+   * Connect to a server
+   *
+   * @param host Hostname of the server to connect to
+   * @param database Name of the database to use
+   * @param port Port number of the remote server
+   * @param username A username to authenticate with server
+   * @param password A password to authenticate the username
+   *
+   * @return Execution status
+   */
+  virtual status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password) = 0;
 
-    /**
-     * Disconnect from the server.
-     * If Connected
-     *
-     * @return Execution status
-     */
-    virtual status_t Disconnect() = 0;
+  /**
+   * Disconnect from the server.
+   * If Connected
+   *
+   * @return Execution status
+   */
+  virtual status_t Disconnect() = 0;
 
-    /**
-     * Get the name of the driver
-     * @return
-     */
-    std::string Name()
-    {
-        return _name;
-    }
+  /**
+   * Get the name of the driver
+   * @return
+   */
+  std::string Name()
+  {
+      return _name;
+  }
 
-    /**
-     * Return the default port number for the database's server
-     */
-    port_t DefaultPort() {
-      return 4201;
-    }
+  /**
+   * Return the default port number for the database's server
+   */
+  port_t DefaultPort() {
+    return 4201;
+  }
 
 protected:
 
-    Driver(const std::string& name) :
-       _name(name)
-    {
-      std::cout << "Constructing Driver '" << _name << "'" << std::endl;
-    };
+  Driver(const std::string& name):
+     _name(name)
+  {
+    std::cout << "Constructing Driver '" << _name << "'" << std::endl;
+  };
 
-    const std::string _name;
+  const std::string _name;
 
 };
 

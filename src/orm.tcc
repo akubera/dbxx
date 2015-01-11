@@ -7,7 +7,7 @@
 
 CPPDB_NAMESPACE_BEGIN
 
-ORM::ORM() :
+ORM::ORM():
   _orm(this)
 {
 }

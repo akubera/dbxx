@@ -7,13 +7,13 @@
 
 #include "dummy_driver.hpp"
 
-dummy_driver::dummy_driver() :
-    Driver("Dummy")
+dummy_driver::dummy_driver():
+  Driver("Dummy")
 {
 }
 
-dummy_driver::dummy_driver(const dummy_driver& orig) :
-    Driver(orig._name)
+dummy_driver::dummy_driver(const dummy_driver& orig):
+  Driver(orig._name)
 {
 }
 
@@ -28,7 +28,8 @@ dummy_driver::Connect(const std::string& host, const std::string& database, cppd
 }
 
 cppdb::status_t
-dummy_driver::Disconnect() {
+dummy_driver::Disconnect()
+{
     return 0;
 }
 

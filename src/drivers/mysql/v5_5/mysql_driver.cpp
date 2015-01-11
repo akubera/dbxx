@@ -11,13 +11,13 @@
 #include "mysql_driver.h"
 
 mysql_driver::mysql_driver() :
-    _conn(mysql_init(nullptr))
+  _conn(mysql_init(nullptr))
 {
-    // this really should not happen...
-    if (_conn == nullptr) {
-        std::cerr << "ERROR : Insufficient memory to allocate a new MYSQL object." << std::endl;
-        throw std::exception();
-    }
+  // this really should not happen...
+  if (_conn == nullptr) {
+    std::cerr << "ERROR : Insufficient memory to allocate a new MYSQL object." << std::endl;
+    throw std::exception();
+  }
 }
 
 mysql_driver::mysql_driver(const mysql_driver& orig) :
@@ -28,23 +28,23 @@ mysql_driver::mysql_driver(const mysql_driver& orig) :
   _password(orig._password),
   _database(orig._database)
 {
-    auto status = mysql_real_connect(_conn, _host.c_str(), _username.c_str(), _password.c_str(), _database.c_str(), _port, nullptr, 0);
-    if (!status) {
-        std::cerr << "ERROR : " << mysql_error(_conn) << std::endl;
-        exit(EXIT_FAILURE);
-    }
+  auto status = mysql_real_connect(_conn, _host.c_str(), _username.c_str(), _password.c_str(), _database.c_str(), _port, nullptr, 0);
+  if (!status) {
+    std::cerr << "ERROR : " << mysql_error(_conn) << std::endl;
+    exit(EXIT_FAILURE);
+  }
 
-    if (orig._conn) {
+  if (orig._conn) {
 
-    }
+  }
 }
 
 mysql_driver::~mysql_driver()
 {
-    if (_conn) {
-        mysql_close(_conn);
-    }
-    _conn = nullptr;
+  if (_conn) {
+    mysql_close(_conn);
+  }
+  _conn = nullptr;
 }
 
 cppdb::status_t
@@ -61,20 +61,20 @@ mysql_driver::Connect(const std::string& host, const std::string& database, cppd
 
 cppdb::status_t
 mysql_driver::Disconnect() {
-    mysql_close(_conn);
-    _conn = nullptr;
-    return 0;
+  mysql_close(_conn);
+  _conn = nullptr;
+  return 0;
 }
 
 cppdb::Driver*
 create_driver()
 {
-    return new mysql_driver;
+  return new mysql_driver;
 }
 
 void
 destroy_driver(cppdb::Driver* driver)
 {
-    delete driver;
+  delete driver;
 }
 

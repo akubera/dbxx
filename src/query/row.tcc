@@ -44,9 +44,9 @@ template <typename... _Tv>
 Row<_Tv...>
 Row<_Tv...>::EmptyRow()
 {
-    Row<_Tv...> result;
-    result._empty = true;
-    return result;
+  Row<_Tv...> result;
+  result._empty = true;
+  return result;
 }
 
 template <typename... _Tv>
