@@ -40,10 +40,10 @@ public:
    * Create object and connect to a database
    *
    * @param db_name   Name of the database to select
-   * @param host      Hostname or IP address of the
-   * @param username  Username of user with
-   * @param password  Password of the user with permission to
-   * @param port      TCP port number the remote server is listening to
+   * @param host      Hostname or IP address of the server
+   * @param username  Username of user
+   * @param password  Password of the user
+   * @param port      TCP port number the remote server is listening on
    */
   Connection(const std::string& db_name,
              const std::string& host,
