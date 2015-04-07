@@ -11,7 +11,7 @@ interface to multiple database backends.
 c11db uses [cmake][cmake] to build and install the library, and comes with a
 unix makefile to automatically setup the cmake build. To build you can either
 do a raw cmake build `mkdir build && cd build && cmake ..` or have the makefile
-do the work for you: `make install`.
+setup cmake and build with default options: `make`.
 
 ## Using
 
