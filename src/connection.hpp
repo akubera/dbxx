@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   connection.hpp
  * Author: andrewkubera
  *
@@ -19,7 +19,7 @@ CPPDB_NAMESPACE_BEGIN
 /**
  * Connection class to a remote server. Acts as a multiplexor, allowing multiple
  * connections (presumably to multiple databases) to a single server. The
- * 'type' of database to connect to is either interpreted from the 
+ * 'type' of database to connect to is either interpreted from the
  */
 class Connection {
 public:
@@ -40,10 +40,10 @@ public:
    * Create object and connect to a database
    *
    * @param db_name   Name of the database to select
-   * @param host      Hostname or IP address of the 
-   * @param username  Username of user with 
-   * @param password  Password of the user with permission to 
-   * @param port      TCP port number the remote server is listening to
+   * @param host      Hostname or IP address of the server
+   * @param username  Username of user
+   * @param password  Password of the user
+   * @param port      TCP port number the remote server is listening on
    */
   Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port);
 
@@ -56,12 +56,14 @@ public:
 
   /**
    * Create a new connection using the same parameters as an existing connection
-   * 
+   *
    * @param orig The original connection
    */
   Connection(const Connection& orig);
 
   /**
+   * Destructor
+   *
    * Destroy connection. Disconnects from server and destroys all tables.
    */
   virtual ~Connection();

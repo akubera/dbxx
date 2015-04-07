@@ -100,8 +100,8 @@ std::shared_ptr<Driver>
 DriverManager::FindDriver(const std::string& driver_name) {
   const std::regex file_regex("lib_"+driver_name+"_driver\\..*");
   for (const auto& dir : SearchPath) {
-    
-  }    
+
+  }
   // not implemented...
   assert(false);
 }
@@ -147,20 +147,20 @@ DriverManager::UnloadDriver(const std::string& name)
   auto lib_finder = _driver_libraries.find(name);
   // find the driver object
   auto found = _drivers.find(name);
-  
+
   // the driver with name 'name' was not loaded - do nothing
   if (lib_finder == _driver_libraries.end()) {
     return;
   }
-  
+
   // load the destroy function
   auto destroy = (void (*)(Driver*))dlsym(lib_finder->second, "destroy_driver");
-  
+
   // destroy the object
   if (found->second.unique()) {
     auto driver = found->second.get();
     found->second.reset();
-    destroy(driver);        
+    destroy(driver);
   }
 
   // close the shared library
@@ -169,6 +169,6 @@ DriverManager::UnloadDriver(const std::string& name)
     dlerror();
   }
 }
-    
+
 
 CPPDB_NAMESPACE_END

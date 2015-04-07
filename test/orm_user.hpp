@@ -13,22 +13,20 @@
 
 typedef std::array<char, 40> username_t;
 
-class user : public cppdb::ORM  {
-    user() {
-        bind("id", &id);
-        bind("username", &username);
-    };
+class user : public cppdb::ORM {
+  user() {
+    bind("id", &id);
+    bind("username", &username);
+  };
 
-    ~user(){};
+  ~user(){};
 
 protected:
-    // user id
-    int id;
+  // user id
+  int id;
 
-    // username
-    username_t username;
+  // username
+  username_t username;
 
 };
-
-
 

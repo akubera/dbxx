@@ -35,8 +35,12 @@ public:
 
   cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
 
+  std::string toString();
+
 protected:
   std::weak_ptr<Connection> _cnx_ptr;
+
+  std::vector<std::string> _selects;
 
 public:
 
