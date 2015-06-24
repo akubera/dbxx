@@ -1,8 +1,7 @@
 /*
- * File:   dummy_driver.cpp
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 6:16 PM
+ * \file src/drivers/dummy_driver.cpp
+ * \author Andrew Kubera
+ * \date January 8, 2014, 6:16 PM
  */
 
 #include "dummy_driver.hpp"
@@ -44,4 +43,3 @@ destroy_driver(cppdb::Driver* driver)
 {
   delete driver;
 }
-

@@ -1,8 +1,7 @@
 /*
- * File:   driver.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 9:35 PM
+ * \file driver.hpp
+ * \author Andrew Kubera
+ * \date January 6, 2014, 9:35 PM
  */
 
 #pragma once

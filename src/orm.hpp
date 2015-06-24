@@ -1,8 +1,7 @@
 /*
  * \file orm.hpp
- * \author andrewkubera
+ * \author Andrew Kubera
  * \date Jan 27, 2014
- *
  */
 
 #ifndef ORM_HPP

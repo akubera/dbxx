@@ -1,8 +1,7 @@
-/* 
- * File:   core/table.hpp
- * Author: Andrew Kubera <andrewkubera@gmail.com>
- *
- * Created on March 20, 2014, 7:58 PM
+/*
+ * \file core/table.hpp
+ * \author Andrew Kubera
+ * \date March 20, 2014, 7:58 PM
  */
 
 #pragma once
