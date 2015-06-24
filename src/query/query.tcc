@@ -1,8 +1,7 @@
-/* 
- * File:   query.tcc
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:35 PM
+/*
+ * \file query/query.tcc
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:35 PM
  */
 
 #ifndef QUERY_HPP
@@ -11,6 +10,8 @@
 
 #include "../cppdb.hpp"
 #include "../connection.hpp"
+
+#include <sstream>
 
 CPPDB_NAMESPACE_BEGIN
 
@@ -57,6 +58,16 @@ Query<_Tv...>::where(const std::string&)
 {
   return *this;
 };
+
+template <typename... _Tv>
+std::string
+Query<_Tv...>::toString()
+{
+  std::stringstream ss;
+
+  ss << "QUERY <>";
+  return ss.str();
+}
 
 
 

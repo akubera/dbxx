@@ -1,24 +1,27 @@
-/* 
- * File:   connection.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 5:07 PM
- */
+///
+/// \file connection.hpp
+/// \author Andrew Kubera <andrew.kubera@gmail.com>
+/// \date January 6, 2014, 5:07 PM EST
+///
 
 #pragma once
 
 #include "cppdb.hpp"
 #include "driver.hpp"
 #include "driver_manager.hpp"
+#include "exceptions.hpp"
 
 #include <string>
 
 CPPDB_NAMESPACE_BEGIN
 
 /**
- * Connection class to a remote server. Acts as a multiplexor, allowing multiple
- * connections (presumably to multiple databases) to a single server. The
- * 'type' of database to connect to is either interpreted from the 
+ * \class Connection
+ * \brief Connection class to a remote server.
+ *
+ * Acts as a multiplexor, allowing multiple connections (presumably to multiple
+ * databases) to a single server. The 'type' of database to connect to is
+ * interpreted from the user.
  */
 class Connection {
 public:
@@ -31,7 +34,8 @@ public:
   /**
    * Create a connection based on a connection string
    *
-   * @param cnx_string A string in the form of "driver://[username:password@]host[:port][/database]"
+   * @param cnx_string A string in the form of
+   * "driver://[username:password@]host[:port][/database]"
    */
   Connection(const std::string& cnx_string);
 
@@ -39,12 +43,16 @@ public:
    * Create object and connect to a database
    *
    * @param db_name   Name of the database to select
-   * @param host      Hostname or IP address of the 
-   * @param username  Username of user with 
-   * @param password  Password of the user with permission to 
-   * @param port      TCP port number the remote server is listening to
+   * @param host      Hostname or IP address of the server
+   * @param username  Username of user
+   * @param password  Password of the user
+   * @param port      TCP port number the remote server is listening on
    */
-  Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port);
+  Connection(const std::string& db_name,
+             const std::string& host,
+             const std::string& username,
+             const std::string& password,
+             port_t port);
 
   /**
    * Wrap a connection around an existing driver
@@ -54,19 +62,28 @@ public:
   Connection(Driver *driver);
 
   /**
-   * Create a new connection using the same parameters as an existing connection
-   * 
+   * Copy constructor
+   *
+   * Create a new connection using the same parameters as an existing
+   * connection
+   *
    * @param orig The original connection
    */
   Connection(const Connection& orig);
 
   /**
+   * Destructor
+   *
    * Destroy connection. Disconnects from server and destroys all tables.
    */
   virtual ~Connection();
 
 protected:
 
+  /**
+   * A shared pointer to a concrete driver - created at the time of connection
+   */
+  std::shared_ptr<Driver> _driver;
 
 };
 

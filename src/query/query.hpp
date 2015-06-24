@@ -1,8 +1,7 @@
 /*
- * File:   query.hpp
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:35 PM
+ * \file query/query.hpp
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:35 PM
  */
 
 #ifndef QUERY_HPP
@@ -15,6 +14,9 @@
 
 #include <cstdlib>
 #include <string>
+#include <tuple>
+#include <memory>
+#include <vector>
 
 CPPDB_NAMESPACE_BEGIN
 
@@ -33,7 +35,12 @@ public:
 
   cppdb::QueryResult<_Tv...> Exec(cppdb::Connection&);
 
+  std::string toString();
+
 protected:
+  std::weak_ptr<Connection> _cnx_ptr;
+
+  std::vector<std::string> _selects;
 
 public:
 

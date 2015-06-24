@@ -1,8 +1,7 @@
 /*
- * File:   driver.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 9:35 PM
+ * \file driver.hpp
+ * \author Andrew Kubera
+ * \date January 6, 2014, 9:35 PM
  */
 
 #pragma once
@@ -17,17 +16,32 @@
 
 CPPDB_NAMESPACE_BEGIN
 
+/**
+ * \class Driver
+ * \brief The abstract base class interface of all database driver
+ *   implementation
+ *
+ */
 class Driver {
 public:
 
+  /**
+   * Default Constructor
+   */
   Driver()
   {
   };
 
+  /**
+   * Copy Constructor
+   */
   Driver(const Driver& orig)
   {
   };
 
+  /**
+   * Distructor
+   */
   virtual ~Driver()
   {
   };
@@ -59,13 +73,20 @@ public:
    */
   std::string Name()
   {
-    return _name;
+      return _name;
+  }
+
+  /**
+   * Return the default port number for the database's server
+   */
+  port_t DefaultPort() {
+    return 4201;
   }
 
 protected:
 
-  Driver(const std::string& name) :
-  _name(name)
+  Driver(const std::string& name):
+     _name(name)
   {
     std::cout << "Constructing Driver '" << _name << "'" << std::endl;
   };

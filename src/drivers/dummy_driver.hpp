@@ -1,8 +1,7 @@
 /*
- * File:   dummy_driver.hpp
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 6:16 PM
+ * \file drivers/dummy_driver.hpp
+ * \author Andrew Kubera
+ * \date January 8, 2014, 6:16 PM
  */
 
 #ifndef DUMMY_DRIVER_HPP
@@ -27,4 +26,3 @@ extern "C" cppdb::Driver* create_driver();
 extern "C" void destroy_driver(cppdb::Driver* driver);
 
 #endif	/* DUMMY_DRIVER_HPP */
-
