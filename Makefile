@@ -14,13 +14,16 @@ else
   CXX = g++
 endif
 
-PHONY: all, clean, cleanall, test
+.PHONY: all, clean, cleanall, docs, test
 
 all:
 	cd build && CC=${CC} CXX=${CXX} cmake .. && make
 
 install:
 	cd build && make install all
+
+docs:
+	cd build && make doc
 
 test:
 	ctest
