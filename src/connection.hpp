@@ -16,9 +16,12 @@
 CPPDB_NAMESPACE_BEGIN
 
 /**
- * Connection class to a remote server. Acts as a multiplexor, allowing
- * multiple connections (presumably to multiple databases) to a single server.
- * The 'type' of database to connect to is either interpreted from the
+ * \class Connection
+ * \brief Connection class to a remote server.
+ *
+ * Acts as a multiplexor, allowing multiple connections (presumably to multiple
+ * databases) to a single server. The 'type' of database to connect to is
+ * interpreted from the user.
  */
 class Connection {
 public:

@@ -16,9 +16,18 @@
 
 CPPDB_NAMESPACE_BEGIN
 
+/**
+ * \class Driver
+ * \brief The abstract base class interface of all database driver
+ *   implementation
+ *
+ */
 class Driver {
 public:
 
+  /**
+   * Default Constructor
+   */
   Driver()
   {
   };
