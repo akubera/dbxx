@@ -1,8 +1,7 @@
 /*
- * File:   driver.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 9:35 PM
+ * \file driver.hpp
+ * \author Andrew Kubera
+ * \date January 6, 2014, 9:35 PM
  */
 
 #pragma once
@@ -14,12 +13,22 @@
 
 #include "types.hpp"
 #include "cppdb.hpp"
+#include "query/query_result.hpp"
 
 CPPDB_NAMESPACE_BEGIN
 
+/**
+ * \class Driver
+ * \brief The abstract base class interface of all database driver
+ *   implementation
+ *
+ */
 class Driver {
 public:
 
+  /**
+   * Default Constructor
+   */
   Driver()
   {
   };
@@ -74,6 +83,10 @@ public:
   port_t DefaultPort() {
     return 4201;
   }
+
+    template <typename... Tv>
+    cppdb::QueryResult<Tv...> ExecQuery(const cppdb::Query<Tv...>&);
+
 
 protected:
 

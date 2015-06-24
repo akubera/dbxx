@@ -1,9 +1,8 @@
-/*
- * File:   connection.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 5:07 PM
- */
+///
+/// \file connection.hpp
+/// \author Andrew Kubera <andrew.kubera@gmail.com>
+/// \date January 6, 2014, 5:07 PM EST
+///
 
 #pragma once
 
@@ -17,9 +16,12 @@
 CPPDB_NAMESPACE_BEGIN
 
 /**
- * Connection class to a remote server. Acts as a multiplexor, allowing multiple
- * connections (presumably to multiple databases) to a single server. The
- * 'type' of database to connect to is either interpreted from the
+ * \class Connection
+ * \brief Connection class to a remote server.
+ *
+ * Acts as a multiplexor, allowing multiple connections (presumably to multiple
+ * databases) to a single server. The 'type' of database to connect to is
+ * interpreted from the user.
  */
 class Connection {
 public:
@@ -32,7 +34,8 @@ public:
   /**
    * Create a connection based on a connection string
    *
-   * @param cnx_string A string in the form of "driver://[username:password@]host[:port][/database]"
+   * @param cnx_string A string in the form of
+   * "driver://[username:password@]host[:port][/database]"
    */
   Connection(const std::string& cnx_string);
 
@@ -45,7 +48,11 @@ public:
    * @param password  Password of the user
    * @param port      TCP port number the remote server is listening on
    */
-  Connection(const std::string& db_name, const std::string& host, const std::string& username, const std::string& password, port_t port);
+  Connection(const std::string& db_name,
+             const std::string& host,
+             const std::string& username,
+             const std::string& password,
+             port_t port);
 
   /**
    * Wrap a connection around an existing driver
@@ -55,7 +62,10 @@ public:
   Connection(Driver *driver);
 
   /**
-   * Create a new connection using the same parameters as an existing connection
+   * Copy constructor
+   *
+   * Create a new connection using the same parameters as an existing
+   * connection
    *
    * @param orig The original connection
    */

@@ -1,8 +1,7 @@
 /*
- * File:   driver_manager.h
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 9:47 PM
+ * \file driver_manager.h
+ * \author Andrew Kubera
+ * \date January 6, 2014, 9:47 PM
  */
 
 #pragma once

@@ -1,8 +1,7 @@
 /*
- * File:   row.tcc
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:48 PM
+ * \file query/row.tcc
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:48 PM
  */
 
 
