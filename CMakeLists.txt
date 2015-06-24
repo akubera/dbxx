@@ -8,6 +8,7 @@ project ( CppDB )
 
 cmake_minimum_required(VERSION 2.8.8)
 
+set(CMAKE_MACOSX_RPATH 1)
 set (CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
@@ -17,6 +18,8 @@ set (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/drivers)
 if (NOT "$ENV{CPPDB_PREFIX}" STREQUAL "")
   set (CMAKE_INSTALL_PREFIX $ENV{CPPDB_PREFIX})
 endif()
+
+set(CMAKE_MACOSX_RPATH 1)
 
 set (CMAKE_BUILD_TYPE Debug)
 
@@ -57,7 +60,7 @@ set (DRIVER_ERROR false)
 
 if (DRIVER_MYSQL)
   find_package (MySQL)
-  if (NOT ${MYSQL_FOUND}) 
+  if (NOT ${MYSQL_FOUND})
     message (SEND_ERROR "Could not find 'MYSQL'")
     set (DRIVER_ERROR true)
   endif ()

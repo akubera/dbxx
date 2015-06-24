@@ -9,9 +9,7 @@
 
 #include <typeinfo>
 #include <stdint.h>
-
-#define CPPDB_NAMESPACE_BEGIN namespace cppdb {
-#define CPPDB_NAMESPACE_END }
+#include "namespace_macros.h"
 
 CPPDB_NAMESPACE_BEGIN
 
@@ -24,11 +22,11 @@ typedef short status_t;
 //
 // SQL types
 //
-typedef char    SQLByte_t;
+typedef int8_t  SQLByte_t;
 typedef char    SQLChar_t;
 
 typedef int16_t SQLInt_t;
-typedef unsigned long int SQLULong_t;
+typedef uint64_t SQLULong_t;
 
 typedef float   SQLSingle_t;
 typedef double  SQLDouble_t;

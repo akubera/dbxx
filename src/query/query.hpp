@@ -17,6 +17,7 @@
 #include <string>
 #include <tuple>
 #include <memory>
+#include <vector>
 
 CPPDB_NAMESPACE_BEGIN
 

@@ -1,8 +1,8 @@
 /*
- * File:   orm.hpp
- * Author: andrewkubera
+ * \file orm.hpp
+ * \author andrewkubera
+ * \date Jan 27, 2014
  *
- * Created on January 27, 2014, 11:30 AM
  */
 
 #ifndef ORM_HPP
@@ -19,11 +19,9 @@ CPPDB_NAMESPACE_BEGIN
 /**
  * ORM (Object Relational Mapper)
  *
- * Class to 
- *
+ * Class mediating data stored in database tables and useable C++ classes/objects
  */
-class ORM
-{
+class ORM {
 public:
   /** Default Constructor */
   ORM();
@@ -51,6 +49,7 @@ protected:
   void bind(const std::string& name, void*ptr) {_field_to_ptr[name] = ptr;};
 
 private:
+  /** Field to ptr */
   std::map<std::string, void*> _field_to_ptr;
 
 };
