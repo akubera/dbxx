@@ -19,6 +19,9 @@ endif
 all:
 	cd build && CC=${CC} CXX=${CXX} cmake .. && make
 
+config:
+	cd build && ccmake ..
+
 install:
 	cd build && make install all
 
