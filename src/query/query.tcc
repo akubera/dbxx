@@ -12,6 +12,8 @@
 #include "../cppdb.hpp"
 #include "../connection.hpp"
 
+#include <sstream>
+
 CPPDB_NAMESPACE_BEGIN
 
 template <typename... _Tv>
@@ -33,30 +35,40 @@ template <typename... _Tv>
 QueryResult<_Tv...>
 Query<_Tv...>::Exec(cppdb::Connection&)
 {
-    QueryResult < _Tv...> res;
-    return res;
+  QueryResult < _Tv...> res;
+  return res;
 }
 
 template <typename... _Tv>
 Query<_Tv...>&
 Query<_Tv...>::select(const std::string& x)
 {
-    return *this;
+  return *this;
 };
 
 template <typename... _Tv>
 Query<_Tv...>&
 Query<_Tv...>::from(const std::string&)
 {
-    return *this;
+  return *this;
 };
 
 template <typename... _Tv>
 Query<_Tv...>&
 Query<_Tv...>::where(const std::string&)
 {
-    return *this;
+  return *this;
 };
+
+template <typename... _Tv>
+std::string
+Query<_Tv...>::toString()
+{
+  std::stringstream ss;
+  
+  ss << "QUERY <>";
+  return ss.str();  
+}
 
 
 

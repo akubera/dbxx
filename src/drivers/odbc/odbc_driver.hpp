@@ -13,45 +13,54 @@
 #include "../../query/query.hpp"
 #include "../../query/query_result.hpp"
 
+// ODBC header
 #include <sql.h>
+
+// ODBC #define macros
 #include <sqlext.h>
+
+// ODBC typedefs
 #include <sqltypes.h>
 
+/**
+ * CppDB Driver for ODBC connections
+ */
 class odbc_driver : public cppdb::Driver {
 public:
-    odbc_driver();
-    odbc_driver(const odbc_driver& orig);
-    virtual ~odbc_driver();
+  odbc_driver();
+  odbc_driver(const odbc_driver& orig);
+  virtual ~odbc_driver();
 
-    cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
-    cppdb::status_t Disconnect();
+  cppdb::status_t Connect(const std::string& host, const std::string& database, cppdb::port_t port, const std::string& username, const std::string& password);
+  cppdb::status_t Disconnect();
+  void Query();
 
-    void Query();
+  template <typename... Tv>
+  cppdb::QueryResult<Tv...> ExecQuery(const cppdb::Query<Tv...>&);
 
-    template <typename... Tv>
-    cppdb::QueryResult<Tv...> ExecQuery(const cppdb::Query<Tv...>&);
-
-    template <typename... Tv>
-    cppdb::QueryResult<Tv...> Exec(cppdb::Connection&);
-
-protected:
-    template <typename T>
-    void BindColumn(SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen);
+  template <typename... Tv>
+  cppdb::QueryResult<Tv...> Exec(cppdb::Connection&);
 
 protected:
-    // sql environment
-    SQLHENV _env;
+  template <typename T>
+  void BindColumn(SQLHSTMT stmt, SQLUSMALLINT col_num, SQLPOINTER  target_val_ptr, SQLLEN buffsize, SQLLEN * strlen);
 
-    // sql connection
-    SQLHDBC _hdbc;
+protected:
+  // sql environment
+  SQLHENV _env;
 
-    // sql status
-    char  _sql_stat[10];
+  // sql connection
+  SQLHDBC _hdbc;
 
+  // sql status
+  char  _sql_stat[10];
 };
 
-extern "C" cppdb::Driver* create_driver();
-extern "C" void destroy_driver(cppdb::Driver* driver);
+// callable functions from outside the driver
+extern "C" {
+  cppdb::Driver* create_driver();
+  void destroy_driver(cppdb::Driver* driver);
+}
 
 // include template implementations
 #include "obdc_driver.tcc"

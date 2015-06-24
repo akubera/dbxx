@@ -9,27 +9,26 @@
 
 #include <typeinfo>
 #include <stdint.h>
-
-#define CPPDB_NAMESPACE_BEGIN namespace cppdb {
-#define CPPDB_NAMESPACE_END }
+#include "namespace_macros.h"
 
 CPPDB_NAMESPACE_BEGIN
 
-    // type for ports (IP)
-    typedef unsigned short port_t;
+// type for ports (IP)
+typedef unsigned short port_t;
 
-    typedef short status_t;
+// status
+typedef short status_t;
 
-    //
-    // SQL types
-    //
-    typedef char    SQLByte_t;
-    typedef char    SQLChar_t;
+//
+// SQL types
+//
+typedef int8_t  SQLByte_t;
+typedef char    SQLChar_t;
 
-    typedef int16_t SQLInt_t;
-    typedef unsigned long int SQLULong_t;
+typedef int16_t SQLInt_t;
+typedef uint64_t SQLULong_t;
 
-    typedef float   SQLSingle_t;
-    typedef double  SQLDouble_t;
+typedef float   SQLSingle_t;
+typedef double  SQLDouble_t;
 
 CPPDB_NAMESPACE_END
