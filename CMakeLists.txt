@@ -8,11 +8,18 @@ project ( CppDB )
 
 cmake_minimum_required(VERSION 2.8.8)
 
+set (CPPDB_VERSION 0.0.1)
+
 set(CMAKE_MACOSX_RPATH 1)
 set (CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
 
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
 set (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/drivers)
+
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+set (CMAKE_DOCS_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/docs)
 
 # Use environment variable CPPDB_PREFIX as the install prefix if set
 if (NOT "$ENV{CPPDB_PREFIX}" STREQUAL "")
@@ -46,6 +53,22 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
      set (CXX11_LIBS "-lc++ -lc++abi -lm -lc -lgcc_s")
   endif()
 endif ()
+
+option (MAKE_DOCS "Generate documentation (Requires SPHINX_EXE)" ON)
+
+# Documentation setup
+if (MAKE_DOCS)
+
+  find_package(Doxygen)
+  if(DOXYGEN_FOUND)
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+    add_custom_target(doc
+      ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
+      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+      COMMENT "Generating API documentation with Doxygen" VERBATIM)
+  endif(DOXYGEN_FOUND)
+
+endif(MAKE_DOCS)
 
 # Require pkg-config
 find_package (PkgConfig REQUIRED)

@@ -1,8 +1,7 @@
-/* 
- * File:   query.tcc
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:35 PM
+/*
+ * \file query/query.tcc
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:35 PM
  */
 
 #ifndef QUERY_HPP
@@ -65,9 +64,9 @@ std::string
 Query<_Tv...>::toString()
 {
   std::stringstream ss;
-  
+
   ss << "QUERY <>";
-  return ss.str();  
+  return ss.str();
 }
 
 

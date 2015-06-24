@@ -1,8 +1,7 @@
 /*
- * File:   orm.cpp
- * Author: andrewkubera
- *
- * Created on January 27, 2014, 11:30 AM
+ * \file orm.tcc
+ * \author Andrew Kubera
+ * \date January 27, 2014, 11:30 AM
  */
 
 CPPDB_NAMESPACE_BEGIN
@@ -21,4 +20,3 @@ ORM::~ORM()
 }
 
 CPPDB_NAMESPACE_END
-

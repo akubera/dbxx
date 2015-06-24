@@ -1,8 +1,7 @@
 /*
- * File:   query.hpp
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:35 PM
+ * \file query/query.hpp
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:35 PM
  */
 
 #ifndef QUERY_HPP

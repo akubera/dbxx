@@ -1,8 +1,7 @@
 /*
- * File:   row.hpp
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:48 PM
+ * \file query/row.hpp
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:48 PM
  */
 
 
@@ -58,4 +57,3 @@ CPPDB_NAMESPACE_END
 #include "row.tcc"
 
 #endif	/* ROW_HPP */
-

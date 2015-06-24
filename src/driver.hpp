@@ -1,8 +1,7 @@
 /*
- * File:   driver.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 9:35 PM
+ * \file driver.hpp
+ * \author Andrew Kubera
+ * \date January 6, 2014, 9:35 PM
  */
 
 #pragma once
@@ -18,9 +17,18 @@
 
 CPPDB_NAMESPACE_BEGIN
 
+/**
+ * \class Driver
+ * \brief The abstract base class interface of all database driver
+ *   implementation
+ *
+ */
 class Driver {
 public:
 
+  /**
+   * Default Constructor
+   */
   Driver()
   {
   };

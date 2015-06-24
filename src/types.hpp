@@ -1,8 +1,7 @@
 /*
- * File:   types.hpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 7:17 PM
+ * \file types.hpp
+ * \author Andrew Kubera
+ * \date January 6, 2014, 7:17 PM
  */
 
 #pragma once

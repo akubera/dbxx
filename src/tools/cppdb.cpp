@@ -1,8 +1,7 @@
-/* 
- * File:   cppdb.cpp
- * Author: andrewkubera
- *
- * Created on January 6, 2014, 7:45 PM
+/*
+ * \file tools/cppdb.cpp
+ * \author Andrew Kubera
+ * \date January 6, 2014, 7:45 PM
  */
 
 #include <cstdlib>
@@ -24,7 +23,7 @@ int version();
 std::string cmd_name;
 
 /*
- * 
+ *
  */
 int main(int argc, char** argv)
 {

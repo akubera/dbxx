@@ -1,8 +1,7 @@
 /*
- * File:   query_result.hpp
- * Author: andrewkubera
- *
- * Created on January 8, 2014, 5:51 PM
+ * \file query/query_result.hpp
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:51 PM
  */
 
 #ifndef QUERY_RESULT_HPP
@@ -29,7 +28,7 @@ template <typename... _Tv>
 class QueryResult {
 public:
 
-  // Empty Query 
+  // Empty Query
   QueryResult();
   QueryResult(const QueryResult& orig);
 
@@ -39,7 +38,7 @@ public:
   /**
    * Return a row at specified index
    *
-   * @param rownumber The row to get 
+   * @param rownumber The row to get
    */
   Row<_Tv...> getRow(size_t rownumber);
 
@@ -58,4 +57,3 @@ CPPDB_NAMESPACE_END
 #include "query_result.tcc"
 
 #endif	/* QUERY_RESULT_HPP */
-

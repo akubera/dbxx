@@ -1,8 +1,7 @@
-/* 
- * File:   query_result.cpp
- * Author: andrewkubera
- * 
- * Created on January 8, 2014, 5:51 PM
+/*
+ * \file query/query_result.tcc
+ * \author Andrew Kubera
+ * \date January 8, 2014, 5:51 PM
  */
 
 #include "query_result.hpp"
@@ -62,4 +61,3 @@ QueryResult<_Tv...>::GetAsTuple(size_t index)
 
 
 CPPDB_NAMESPACE_END
-
