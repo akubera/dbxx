@@ -9,5 +9,6 @@ DOXYGEN := doxygen
 
 all:
 
-
+clean:
+	rm -r output/*
 
