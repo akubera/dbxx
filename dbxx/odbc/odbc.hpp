@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "../dbxx_macros.h"
+#include "../dbxx_macros.hpp"
 
 #include <string>
 #include <cstdio>
@@ -28,5 +28,4 @@ void odbc_connect(const std::string &connection_string)
     env = new SQLHENV;
     SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, env);
   }
-    connection_string
 }

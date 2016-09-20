@@ -1,5 +1,6 @@
 
 #include <dbxx/dbxx.hpp>
+#include <dbxx/odbc/odbc.hpp>
 #include <bandit/bandit.h>
 
 using namespace bandit;
