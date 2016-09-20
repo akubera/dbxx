@@ -4,6 +4,7 @@
  * Defines project-wide macros to be used internally.
  */
 
+#pragma once
 
 #ifndef DBXX_NAMESPACE_BEGIN
 

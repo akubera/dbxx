@@ -29,6 +29,31 @@ Using
   #include <dbxx/dbxx.hpp>
 
 
+Testing
+-------
+
+If you want to help develop dbxx, please write some tests for your code in the
+`test` directory. This requires the C++ test framework bandit_ to be installed
+on your system.
+The Makefile in the test directory requires the `BANDIT_HEADER_DIR` environment
+variable to point to the bandit directory containing `bandit.h`, which defaults
+to the test directory.
+
+To install bandit and run tests run this: 
+
+.. code: bash
+
+   git clone --recursive --depth=1 --branch=v2.0.0 https://github.com/joakimkarlsson/bandit
+   mv bandit/bandit test
+   rm -rf bandit
+
+   cd test
+   make
+
+
+More information on developing/testing will come later.
+
+
 License
 -------
 
@@ -40,4 +65,7 @@ stable releases, 'dev' being the semi-stable development branch, and very-unstab
 feature branches should be created with the name 'feature/foo'.
 
 Contributions are welcome! 
+
+
+.. _bandit: http://banditcpp.org
 

@@ -12,5 +12,4 @@
 
 #include "dbxx_macros.hpp"
 
-
-
+#endif /* DBXX_HPP */
