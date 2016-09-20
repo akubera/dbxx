@@ -23,7 +23,7 @@ anywhere your build system looks for header file.
 Using
 -----
 
-.. code: c++
+.. code:: cpp
 
   // include main dbxx file
   #include <dbxx/dbxx.hpp>
@@ -41,7 +41,7 @@ to the test directory.
 
 To install bandit and run tests run this: 
 
-.. code: bash
+.. code::
 
    git clone --recursive --depth=1 --branch=v2.0.0 https://github.com/joakimkarlsson/bandit
    mv bandit/bandit test
